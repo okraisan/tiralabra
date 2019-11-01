@@ -3,9 +3,9 @@
 Ohjelmani ratkaisee lyhimmän reitin sokkelossa, jonka se saa kuvatiedostona.
 Käyttäjä huolehtii ensin kuvan sellaiseen bittikarttaformaattiin, että
 labyrintin seinät ovat mustia, tausta valkoinen ja kuvasta käy eri väreillä
-ilmi haluttu alku- ja loppupiste. Ohjelma antaa tuloksena ensinnäkin tiedon,
-onko sokkeloon löydettävissä ratkaisua. Jos on, se myös piirtää ratkaisun
-kuvalle ja kirjoittaa tiedoston levylle.
+ilmi haluttu alkupikseli (`FF0000`) ja loppupikseli (`00FF00`). Ohjelma antaa
+tuloksena ensinnäkin tiedon, onko sokkeloon löydettävissä ratkaisua. Jos on,
+se myös piirtää ratkaisun kuvalle ja kirjoittaa tiedoston levylle.
 
 ### Mitä tarkoittaa lyhin reitti?
 
@@ -16,17 +16,19 @@ pikselien diagonaalinen naapuruus saa arvon √2 ja vaaka- tai pystysuora
 naapuruus arvon 1.
 
 Ohjelman käyttötapaus voisi olla ihmisten ratkottaviksi tehtyjen sokkelokuvien
-ratkaiseminen, jopa paperilta skannattuina. Tällaisessa käytössä ei
-välttämättä ole merkitystä sillä, kumpaa etäisyysmetriikkaa täsmälleen käytetään;
+ratkaiseminen, jopa paperilta skannattuina. Sokkelon elementtien kuten käytävien
+ja risteysten mittakaava voi olla huomattavasti suurempi kuin pikseliruudukon
+mittakaava. Tällaisessa käytössä ei
+välttämättä ole merkitystä sillä, kumpaa pikselietäisyysmetriikkaa täsmälleen käytetään;
 ihmisen tuottamissa sokkeloratkaisuissahan voidaan kulkea vaikkapa
-epäoptimaalisesti käytävän keskellä, ja ratkaisun voi silti sanoa olevan aivan
-oikein:
+epäoptimaalisesti käytävän keskellä, ja ratkaisun voi silti sanoa olevan
+kyseisen sokkelon mittakaava huomioiden aivan oikein:
 
 ![Ihmisen ja koneen ratkaisema sokkelo](https://i.imgur.com/RD9Ga5C.png)
 
 Viimeistään väriarvojen mielivaltainen kynnystys mustaksi ja valkoiseksi
-tuottaa koneratkaisuun epävarmuutta. Väite "lyhin reitti" pätee siis vain tähän
-pikseliesitykseen.
+tuottaa koneratkaisuun epävarmuutta. Väite "lyhin reitti" pätee siis täsmällisesti
+vain tähän pikseliesitykseen.
 
 ### Flood fill -algoritmi
 
@@ -52,12 +54,12 @@ koko on tiedossa heti kun syötekuvan koko tiedetään.
 
 ### Kompleksisuus
 
-Tavoitteenani on aikavaativuus O(n), kun n on syötekuvan pikselien määrä. Flood
+Tavoitteenani on aikavaativuus *O(n)*, kun *n* on syötekuvan pikselien määrä. Flood
 fill -algoritmin aikavaativuus nimittäin vastaa leveyshakua. 4- tai 8-naapuruuden
 takia solmun kaarien määrällä on vakiomuotoinen yläraja, ja algoritmi käy pahimmassa
 tapauksessa kaikki solmut läpi.
 
 Laskennan vaatima muistin määrä on myös pahimmassa tapauksessa suoraan
 verrannollinen pikselien määrään kuvalla; jokainen pikseli ja sen naapuruustieto
-tallennetaan solmuksi ja solmun koko on vakio. Tilavaativuuskin on siten luokkaa O(n).
+tallennetaan solmuksi ja solmun koko on vakio. Tilavaativuuskin on siten luokkaa *O(n)*.
 
