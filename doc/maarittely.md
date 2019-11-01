@@ -32,10 +32,12 @@ vain tähän pikseliesitykseen.
 
 ### Flood fill -algoritmi
 
-Aion käyttää toteutuksessani ns. flood fill -algoritmia. Se täyttää kuvaa
-värillä 4- tai 8-naapurusto kerrallaan alkupikselistä lähtien ja seiniin
-pysähtyen kuten kuvankäsittelyohjelman täyttötyökalu. Jokainen väritetty pikseli sisältää tiedon reitin edellisistä
-pikseleistä.
+Aion käyttää toteutuksessani ns. flood fill -algoritmia, joka on minulle
+ennalta jossain määrin tuttu ja on toteutettavissa TiRasta tutuilla
+menetelmillä. Se täyttää kuvaa värillä 4- tai 8-naapurusto
+kerrallaan alkupikselistä lähtien ja seiniin pysähtyen kuten
+kuvankäsittelyohjelman täyttötyökalu. Jokainen väritetty pikseli sisältää
+tiedon reitin edellisistä pikseleistä.
 
 ![Pikselin 4-naapurusto](https://i.imgur.com/uYwkbKF.png)
 
@@ -54,12 +56,15 @@ koko on tiedossa heti kun syötekuvan koko tiedetään.
 
 ### Kompleksisuus
 
-Tavoitteenani on aikavaativuus *O(n)*, kun *n* on syötekuvan pikselien määrä. Flood
-fill -algoritmin aikavaativuus nimittäin vastaa leveyshakua. 4- tai 8-naapuruuden
-takia solmun kaarien määrällä on vakiomuotoinen yläraja, ja algoritmi käy pahimmassa
-tapauksessa kaikki solmut läpi.
+Leveyshaun aikavaativuus on *O(|V| + |E|)*, jossa *|V|* on solmujen
+määrä ja *|E|* on kaarien määrä[1]. 4- tai 8-naapuruuden
+takia solmun kaarien määrällä on vakiomuotoinen yläraja.
+Tavoitteenani on siis aikavaativuus *O(n)*, kun *n* on syötekuvan pikselien määrä.
 
 Laskennan vaatima muistin määrä on myös pahimmassa tapauksessa suoraan
 verrannollinen pikselien määrään kuvalla; jokainen pikseli ja sen naapuruustieto
 tallennetaan solmuksi ja solmun koko on vakio. Tilavaativuuskin on siten luokkaa *O(n)*.
 
+### Lähteitä
+
+1. Cormen ym. (2001) Introduction to Algorithms (2. painos), ss. 531–539 (Wikipedian mukaan, artikkeli [Breadth-first search](https://en.wikipedia.org/wiki/Breadth-first_search))
