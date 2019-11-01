@@ -25,5 +25,7 @@ Verkkotietorakenteen osat lienevät suoraviivaisesti yksikkötestattavia, mutta
 entä reitinhaku kokonaisuutena? C++:aa koodaavana vim-käyttäjänä myös Eclipsen
 projektirakenne ja buildauskäytännöt vaativat jonkin verran totuttelua.
 
+Arvioisin käyttäneeni kurssiin tällä viikolla yli viisi, alle kymmenen tuntia.
+
 Ensi viikolla on tarkoitus aloittaa varsinainen koodaus. Aloitan kenties kuvan
 lukemisesta, jotta syötedataa olisi heti käytettävissä.
