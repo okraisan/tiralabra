@@ -24,7 +24,7 @@ ihmisen tuottamissa sokkeloratkaisuissahan voidaan kulkea vaikkapa
 epäoptimaalisesti käytävän keskellä, ja ratkaisun voi silti sanoa olevan
 kyseisen sokkelon mittakaava huomioiden aivan oikein:
 
-![Ihmisen ja koneen ratkaisema sokkelo](https://i.imgur.com/RD9Ga5C.png)
+![Ihmisen ja koneen ratkaisema sokkelo](https://i.imgur.com/Qz1ZEWX.png)
 
 Viimeistään väriarvojen mielivaltainen kynnystys mustaksi ja valkoiseksi
 tuottaa koneratkaisuun epävarmuutta. Väite "lyhin reitti" pätee siis täsmällisesti
