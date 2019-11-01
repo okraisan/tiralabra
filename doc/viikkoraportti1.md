@@ -1,7 +1,8 @@
 ## Viikkoraportti 1
 
-Kurssi on aloitettu; tällä viikolla luin paljon materiaalia ja ohjeistusta sekä
-kävin aloitusluennolla.
+Kurssi on aloitettu; tällä viikolla luin paljon materiaalia ja ohjeistusta,
+kävin aloitusluennolla, kirjoitin määrittelydokumentin ja loin Eclipse-
+projektirungon.
 
 Luennolla kuulemieni vinkkien pohjalta ajattelin ensin jotakin itselleni
 mielenkiintoista mutta haastavaa algoritmitehtävää. Mielessäni oli ensimmäisenä
