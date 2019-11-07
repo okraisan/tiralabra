@@ -44,20 +44,34 @@ public class Main {
     }
     
     if (entryNodeIndex == -1) {
-      System.out.println("Labyrinth has no entry point!");
+      System.out.println("Labyrinth has no entry point. Please color one pixel as #FF0000.");
       return;
     }
     if (exitNodeIndex == -1) {
-      System.out.println("Labyrinth has no exit point!");
+      System.out.println("Labyrinth has no exit point. Please color one pixel as #00FF00.");
       return;
     }
     
     // Nyt meillä on verkko, käydään se läpi
-    Queue<Integer> nodeQueue = new LinkedList<Integer>();
-    nodeQueue.add(new Integer(entryNodeIndex));
+    Queue<Integer> fillQueue = new LinkedList<Integer>();
+    fillQueue.add(new Integer(entryNodeIndex));
     
-    while (nodeQueue.size() > 0) {
+    while (fillQueue.size() > 0) {
+      int nodeIndex = fillQueue.remove();
+      if (nodeIndex == exitNodeIndex) {
+        return;
+      }
       
+      image.setPixelAtIndex(nodeIndex, 0x00FFFF);
+      
+      int[] neighbors = graph.getNodeAt(nodeIndex).getNeighbors();
+      for (int i = 0; i < neighbors.length; i++) {
+        if (neighbors[i] != -1) {
+          fillQueue.add(neighbors[i]);
+        }
+      }
     }
+    
+    image.save("/tmp/out.png");
   }
 }

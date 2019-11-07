@@ -30,4 +30,8 @@ public class Node {
       neighbors[whichNeighbor] = index;
     }
   }
+  
+  public int[] getNeighbors() {
+    return neighbors;
+  }
 }
