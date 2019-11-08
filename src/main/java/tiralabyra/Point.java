@@ -16,4 +16,8 @@ public class Point {
   public int getY() {
     return posY;
   }
+  
+  static Point add(Point a, Point b) {
+    return new Point(a.getX() + b.getX(), a.getY() + b.getY());
+  }
 }

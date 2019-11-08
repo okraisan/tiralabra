@@ -11,16 +11,15 @@ public class ConnectedGraph {
   }
   
   /**
-   * Adds a directional neighborhood for two nodes.
+   * Adds a bidirectional neighborhood for two nodes.
    * @param nodeIndex     Index of the originating node in the graph.
-   * @param whichNeighbor Number of neighborhood in graph with a known rank.
    * @param neighborIndex Index of the neighbor node in the graph.
    */
-  public void addNeighborhood(int nodeIndex, int whichNeighbor, int neighborIndex) {
+  public void addNeighborhood(int nodeIndex, int neighborIndex) {
     if (nodeIndex >= 0 && nodeIndex < nodes.length
-        && whichNeighbor >= 0 && whichNeighbor < 4
         && neighborIndex >= 0 && neighborIndex < nodes.length) {
-      nodes[nodeIndex].setNeighbor(whichNeighbor, neighborIndex);
+      nodes[nodeIndex].addNeighbor(neighborIndex);
+      nodes[neighborIndex].addNeighbor(nodeIndex);
     }
   }
   

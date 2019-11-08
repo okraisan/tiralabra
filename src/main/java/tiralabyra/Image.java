@@ -9,9 +9,9 @@ import javax.imageio.ImageIO;
  * Represents a bitmap image of a labyrinth.
  */
 public class Image {
-  private final int kAlkupisteenVari  = 0xFF0000FF;
-  private final int kLoppupisteenVari = 0x00FF00FF;
-  private final int kSeinanVari       = 0x000000FF;
+  private final int entryPointColor  = 0xFFFF0000;
+  private final int exitPointColor   = 0xFF00FF00;
+  private final int wallColor        = 0xFF000000;
   
   private BufferedImage bufferedImage;
   
@@ -36,48 +36,88 @@ public class Image {
     return bufferedImage.getHeight();
   }
   
+  /**
+   * @return Total area of the image, in pixels.
+   */
   public int getNumberOfPixels() {
     return bufferedImage.getWidth() * bufferedImage.getHeight();
   }
   
-  public int getIndexForPixel(int x, int y) {
-    return y * bufferedImage.getWidth() + x;
+  /**
+   * @return A linear index for the given pixel coordinates.
+   */
+  public int getIndexForPixel(Point point) {
+    return point.getY() * bufferedImage.getWidth() + point.getX();
   }
   
-  public void setPixelAtIndex(int index, int color) {
-    int y = index / bufferedImage.getWidth();
-    int x = index % y;
+  public Point[] getPixelPositions() {
+    Point[] result = new Point[getNumberOfPixels()];
+    for (int y = 0; y < getHeight(); y++) {
+      for (int x = 0; x < getWidth(); x++) {
+        result[y * getWidth() + x] = new Point(x, y);
+      }
+    }
     
-    if (y >= 0 && x >= 0 && y < bufferedImage.getHeight()) {
-      bufferedImage.setRGB(x, y, color);
+    return result;
+  }
+  
+  /**
+   * Draw a filled square around the coordinates indicated by the given linear pixel index.
+   */
+  public void plotPathAroundIndex(int index, int color) {
+    Point centerPoint = new Point(index % bufferedImage.getWidth(), index / bufferedImage.getWidth());
+
+    for (int deltaY = -1; deltaY <= 1; deltaY++) {
+      for (int deltaX = -1; deltaX <= 1; deltaX++) {
+        Point plotPoint = Point.add(centerPoint, new Point(deltaX, deltaY));
+        if (containsPosition(plotPoint) && isTraversableAt(plotPoint)) {
+          bufferedImage.setRGB(plotPoint.getX(), plotPoint.getY(), color);
+        }    
+      }
     }
+    
+    
   }
   
-  public boolean containsPosition(int x, int y) {
-    return (x >= 0 && y >= 0
-            && x < bufferedImage.getWidth() && y < bufferedImage.getHeight());
+  /**
+   * @return True if the given coordinates are inside the image boundary.
+   */
+  public boolean containsPosition(Point point) {
+    return (point.getX() >= 0 && point.getY() >= 0
+            && point.getX() < bufferedImage.getWidth() && point.getY() < bufferedImage.getHeight());
   }
   
-  public boolean isTraversableAt(int x, int y) {
-    if (containsPosition(x, y)) {
-      System.out.println("pikselin arvo " + bufferedImage.getRGB(x, y));
-    }
-    return (containsPosition(x, y)
-            && bufferedImage.getRGB(x,  y) != kSeinanVari);
+  /**
+   * @return True if there's a non-wall pixel at the given coordinates.
+   */
+  public boolean isTraversableAt(Point point) {
+    return (containsPosition(point)
+            && bufferedImage.getRGB(point.getX(),  point.getY()) != wallColor);
   }
   
-  public boolean hasEntryPointAt(int x, int y) {
-    return (containsPosition(x, y)
-            && bufferedImage.getRGB(x, y) == kAlkupisteenVari);
+  /**
+   * @return True if there's an entry point pixel at the given coordinates.
+   */
+  public boolean hasEntryPointAt(Point point) {
+    return (containsPosition(point)
+            && bufferedImage.getRGB(point.getX(), point.getY()) == entryPointColor);
   }
   
-  public boolean hasExitPointAt(int x, int y) {
-    return (containsPosition(x, y)
-            && bufferedImage.getRGB(x, y) == kLoppupisteenVari);
+  /**
+   * @return True if there's an exit point pixel at the given coordinates.
+   */
+  public boolean hasExitPointAt(Point point) {
+    return (containsPosition(point)
+            && bufferedImage.getRGB(point.getX(), point.getY()) == exitPointColor);
   }
   
+  /**
+   * Save this image as a file.
+   * @param path Filesystem path of the image to be written.
+   */
   public void save(String path) {
     try {
+      System.out.println("Save");
       ImageIO.write(bufferedImage, "png", new File(path));
     } catch (IOException e) {
       System.out.println("Can't open file for writing");
