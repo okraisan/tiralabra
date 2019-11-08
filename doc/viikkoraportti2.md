@@ -20,3 +20,6 @@ erikoisten suorien kulmien kautta.
 Seuraavaksi siirryn tekemään ConnectedGraph-luokasta sellaista, joka osaa
 konstruktorissa lukea kuvan ja rakentaa siitä oikeanlaisen verkon naapuruuksineen
 ja kaaripainoineen.
+
+En ole vielä saanut viritettyä varsinaista työaikakelloa, mutta arvioisin
+käyttäneeni kurssiin tällä viikolla 10-15 tuntia.
