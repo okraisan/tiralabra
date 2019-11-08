@@ -9,7 +9,8 @@ Myös luokkarakenne on alkeellinen; suuri osa logiikasta on Mainissa.
 
 Myös Eclipsen konfigurointi tyylitarkistuksineen ja kattavuusseurantoineen
 alkaa olla kohdillaan. Point-luokalle, joka lienee lähellä lopullista muotoaan,
-on kattavat yksikkötestit.
+on kattavat yksikkötestit. Käytännössä se tarkoittaa getterien ja staattisen
+yhteenlaskufunktion testausta.
 
 Olen huomannut viikon aikana, että arveluni pikselietäisyyksien mittaustavan
 merkityksettömyydestä meni hieman mönkään. Jos nimittäin reitin pituutta
