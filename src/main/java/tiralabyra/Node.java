@@ -14,14 +14,14 @@ public class Node {
   private Set<Integer> neighbors;
 
   /**
-   * Initializes the Node to have no neighbors.
+   * Initialize the Node to have no neighbors.
    */
   public Node() {
     neighbors = new HashSet<Integer>();
   }
 
   /**
-   * Sets one of this node's neighbors to point to an index in the graph.
+   * Set one of this node's neighbors to point to an index in the graph.
    * @param index         Index of the neighbor node in the graph.
    */
   public void addNeighbor(final int index) {
@@ -29,9 +29,7 @@ public class Node {
   }
 
   /**
-   * Return the set of neighbors to this node.
-   *
-   * @return Set of indices to neighbor nodes.
+   * @return Set of indices to neighbor nodes of this node.
    */
   public Set<Integer> getNeighbors() {
     return neighbors;
