@@ -8,8 +8,10 @@ public class Main {
   public static void main(String[] args) {
     
     final int backtrackColor = 0xFFFF0000;
+    final String inFileName  = "C:\\Users\\windy\\Pictures\\labyrintti.png";
+    final String outFileName = "C:\\Users\\windy\\Pictures\\labyra_out.png";
 
-    Image image = new tiralabyra.Image("C:\\Users\\windy\\Pictures\\labyrintti.png");
+    Image image = new tiralabyra.Image(inFileName);
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image.getNumberOfPixels());
     
     int entryNodeIndex = -1;
@@ -97,6 +99,6 @@ public class Main {
       backtrackIndex = parent[backtrackIndex];
     }
     
-    image.save("C:\\Users\\windy\\Pictures\\labyra_out.png");
+    image.save(outFileName);
   }
 }

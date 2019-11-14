@@ -11,6 +11,14 @@ public class ConnectedGraph {
   }
   
   /**
+   * Builds a connected graph based on an input image, with all neighborhoods and input/exit nodes in place.
+   * @param image
+   */
+  public ConnectedGraph(Image image) {
+    
+  }
+  
+  /**
    * Adds a bidirectional neighborhood for two nodes.
    * @param nodeIndex     Index of the originating node in the graph.
    * @param neighborIndex Index of the neighbor node in the graph.
