@@ -46,10 +46,10 @@ public class ImageTest {
     final byte bFF = (byte) 0xFF;
     final byte b00 = (byte) 0x00;
     testImageBytes = new byte[] {
-        bFF, bFF, b00, b00, // Entry point.
-        bFF, b00, b00, b00, // Wall.
-        bFF, bFF, bFF, bFF, // Traversable.
-        bFF, b00, bFF, b00  // Exit.
+        b00, b00, bFF, bFF,
+        b00, b00, b00, bFF,
+        bFF, bFF, bFF, bFF,
+        b00, bFF, b00, bFF
     };
 
     testImageBuffer = ImageIO.read(new ByteArrayInputStream(testImageBytes));
