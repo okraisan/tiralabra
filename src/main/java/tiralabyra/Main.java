@@ -3,9 +3,20 @@ package tiralabyra;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Main {
+public final class Main {
 
-  public static void main(String[] args) {
+  /**
+   * Private constructor for utility class, to satisfy Sun style.
+   */
+  @SuppressWarnings("unused")
+  private Main() {
+  }
+
+  /**
+   * We start here.
+   * @param args Command line parameters.
+   */
+  public static void main(final String[] args) {
 
     final int backtrackColor = 0xFFFF0000;
     final String inFileName  = "C:\\Users\\windy\\Pictures\\labyrintti.png";

@@ -1,7 +1,11 @@
 package tiralabyra;
 
 public class ConnectedGraph {
-  Node[] nodes;
+
+  /**
+   * Edges (node-node neighborhoods) of this graph.
+   */
+  private Edge[][] edges;
 
   /**
    * Which node is the entry point.
@@ -9,16 +13,14 @@ public class ConnectedGraph {
   private int entryNodeIndex = -1;
 
   /**
+   * Maximum number of neighbors a node can have.
+   */
+  private final int numberOfNeighborhoods = 8;
+
+  /**
    * Which node is the exit point.
    */
   private int exitNodeIndex = -1;
-
-  public ConnectedGraph(final int size) {
-    nodes = new Node[size];
-    for (int i = 0; i < nodes.length; i++) {
-      nodes[i] = new Node();
-    }
-  }
 
   /**
    * Build a connected graph based on an input image, with all neighborhoods
@@ -27,6 +29,7 @@ public class ConnectedGraph {
    * points.
    */
   public ConnectedGraph(final Image image) {
+    edges = new Edge[image.getNumberOfPixels()][numberOfNeighborhoods];
 
     // Direction vectors, for better clarity.
     final Point dE  = new Point(1,  0);
@@ -40,33 +43,38 @@ public class ConnectedGraph {
       if (image.isTraversableAt(point)) {
         // Non-wall pixel to the East is always traversable.
         if (image.isTraversableAt(Point.add(point, dE))) {
-          addNeighborhood(image.getIndexForPixel(point),
-                          image.getIndexForPixel(Point.add(point, dE)));
+          addEdge(image.getIndexForPixel(point),
+                  image.getIndexForPixel(Point.add(point, dE)),
+                  Math.sqrt(2.0));
         }
 
         // Non-wall pixel to the South is always traversable.
         if (image.isTraversableAt(Point.add(point, dS))) {
-          addNeighborhood(image.getIndexForPixel(point),
-                          image.getIndexForPixel(Point.add(point, dS)));
+          addEdge(image.getIndexForPixel(point),
+                  image.getIndexForPixel(Point.add(point, dS)),
+                  Math.sqrt(2.0));
         }
 
         // South-west pixel is traversable unless there's a corner in between.
         if (image.isTraversableAt(Point.add(point, dSW))
             && image.isTraversableAt(Point.add(point, dW))
             && image.isTraversableAt(Point.add(point, dE))) {
-          addNeighborhood(image.getIndexForPixel(point),
-                          image.getIndexForPixel(Point.add(point, dSW)));
+          addEdge(image.getIndexForPixel(point),
+                  image.getIndexForPixel(Point.add(point, dSW)),
+                  Math.sqrt(2.0));
         }
 
         // South-east pixel is traversable unless there's a corner in between.
         if (image.isTraversableAt(Point.add(point, dSE))
             && image.isTraversableAt(Point.add(point, dS))
             && image.isTraversableAt(Point.add(point, dE))) {
-          addNeighborhood(image.getIndexForPixel(point),
-                          image.getIndexForPixel(Point.add(point, dSE)));
+          addEdge(image.getIndexForPixel(point),
+                  image.getIndexForPixel(Point.add(point, dSE)),
+                  Math.sqrt(2.0));
         }
       }
 
+      // Assign entry and exit point.
       if (image.hasEntryPointAt(point)) {
         entryNodeIndex = image.getIndexForPixel(point);
       }
@@ -92,17 +100,13 @@ public class ConnectedGraph {
    * Adds a bidirectional neighborhood for two nodes.
    * @param nodeIndex     Index of the originating node in the graph.
    * @param neighborIndex Index of the neighbor node in the graph.
+   * @param weight        Edge weight (cost).
    */
-  public void addNeighborhood(final int nodeIndex, final int neighborIndex) {
-    if (nodeIndex >= 0 && nodeIndex < nodes.length
-        && neighborIndex >= 0 && neighborIndex < nodes.length) {
-      nodes[nodeIndex].addNeighbor(neighborIndex);
-      nodes[neighborIndex].addNeighbor(nodeIndex);
-    }
-  }
+  public void addEdge(final int nodeIndex, final int neighborIndex,
+                      final double weight) {
 
-  public Node getNodeAt(final int nodeIndex) {
-    // TODO: What happens when out of bounds?
-    return nodes[nodeIndex];
+    if (nodeIndex >= 0 && neighborIndex >= 0) {
+    
+    }
   }
 }
