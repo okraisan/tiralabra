@@ -30,6 +30,11 @@ public class ConnectedGraph {
    */
   public ConnectedGraph(final Image image) {
     edges = new Edge[image.getNumberOfPixels()][numberOfNeighborhoods];
+    for (int i = 0; i < image.getNumberOfPixels(); i++) {
+      for (int j = 0; j < numberOfNeighborhoods; j++) {
+        edges[i][j] = new Edge(-1, -1, 0.0);
+      }
+    }
 
     // Direction vectors, for clarity.
     final Point dE  = new Point(1,  0);
