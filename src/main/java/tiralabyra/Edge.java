@@ -15,12 +15,12 @@ public class Edge {
   /**
    * First node of this edge connection.
    */
-  private int node1;
+  private int node1 = -1;
 
   /**
    * First node of this edge connection.
    */
-  private int node2;
+  private int node2 = -1;
 
   /**
    * @param n1 First node of this edge connection.

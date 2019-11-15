@@ -30,26 +30,27 @@ public final class Main {
     int[]     parent    = new int[image.getNumberOfPixels()];
 
     Queue<Integer> fillQueue = new LinkedList<Integer>();
-    fillQueue.add(new Integer(entryNodeIndex));
+    fillQueue.add(new Integer(graph.getEntryNodeIndex()));
 
     while (fillQueue.size() > 0) {
       int nodeIndex = fillQueue.remove();
-      if (nodeIndex == exitNodeIndex) {
+      if (nodeIndex == graph.getExitNodeIndex()) {
         break;
       }
 
-      for (int neighborIndex : graph.getNodeAt(nodeIndex).getNeighbors()) {
-        if (neighborIndex != -1 && !isVisited[neighborIndex]) {
-          isVisited[neighborIndex] = true;
-          parent[neighborIndex] = nodeIndex;
-          fillQueue.add(neighborIndex);
+      for (Edge edge : graph.getEdgesFrom(nodeIndex)) {
+        if (edge != null && edge.getNode2() != -1
+            && !isVisited[edge.getNode2()]) {
+          isVisited[edge.getNode2()] = true;
+          parent[edge.getNode2()] = nodeIndex;
+          fillQueue.add(edge.getNode2());
         }
       }
     }
 
     // Backtrack.
-    int backtrackIndex = exitNodeIndex;
-    while (backtrackIndex != entryNodeIndex) {
+    int backtrackIndex = graph.getExitNodeIndex();
+    while (backtrackIndex != graph.getEntryNodeIndex()) {
       image.plotPathAroundIndex(backtrackIndex, backtrackColor);
       backtrackIndex = parent[backtrackIndex];
     }
