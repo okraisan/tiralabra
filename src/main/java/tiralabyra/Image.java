@@ -43,6 +43,14 @@ public class Image {
   }
 
   /**
+   * Read an image from a BufferedImage.
+   * @param buf The input buffer.
+   */
+  public Image(final BufferedImage buf) {
+    bufferedImage = buf;
+  }
+
+  /**
    * @return Image width in pixels.
    */
   public int getWidth() {

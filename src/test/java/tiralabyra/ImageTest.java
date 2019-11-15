@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -22,7 +21,7 @@ public class ImageTest {
    * Test image, Java internal representation.
    */
   private BufferedImage testImageBuffer;
-  
+
   /**
    * Test image, in the class to be tested.
    */
@@ -30,7 +29,8 @@ public class ImageTest {
 
   /**
    * Set up test data.
-   * @throws Exception
+   * @throws Exception IOException in case the hardcoded test data can't be read
+   *         (unlikely).
    */
   @Before
   public void setUp() throws Exception {
@@ -53,8 +53,12 @@ public class ImageTest {
     };
 
     testImageBuffer = ImageIO.read(new ByteArrayInputStream(testImageBytes));
+    testImage = new Image(testImageBuffer);
   }
 
+  /**
+   * The entry point in the test image must be recognized.
+   */
   @Test
   public void imageHasEntryPoint() {
     assertEquals(true, testImage.hasEntryPointAt(new Point(0, 0)));
