@@ -18,7 +18,7 @@ public class Edge {
   private int node1 = -1;
 
   /**
-   * First node of this edge connection.
+   * Second node of this edge connection.
    */
   private int node2 = -1;
 

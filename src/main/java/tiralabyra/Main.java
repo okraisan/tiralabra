@@ -25,7 +25,7 @@ public final class Main {
     Image image = new tiralabyra.Image(inFileName);
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
 
-    // Breadth-first search.
+    // Breadth-first search, just for demonstation.
     boolean[] isVisited = new boolean[image.getNumberOfPixels()];
     int[]     parent    = new int[image.getNumberOfPixels()];
 
