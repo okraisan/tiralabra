@@ -104,8 +104,10 @@ public class Image {
     Point centerPoint = new Point(index % bufferedImage.getWidth(),
                                   index / bufferedImage.getWidth());
 
-    for (int deltaY = -1; deltaY <= 1; deltaY++) {
-      for (int deltaX = -1; deltaX <= 1; deltaX++) {
+    final int brushRadius = 0;
+
+    for (int deltaY = -brushRadius; deltaY <= brushRadius; deltaY++) {
+      for (int deltaX = -brushRadius; deltaX <= brushRadius; deltaX++) {
         Point plotPoint = Point.add(centerPoint, new Point(deltaX, deltaY));
         if (containsPosition(plotPoint) && isTraversableAt(plotPoint)) {
           bufferedImage.setRGB(plotPoint.getX(), plotPoint.getY(), color);
