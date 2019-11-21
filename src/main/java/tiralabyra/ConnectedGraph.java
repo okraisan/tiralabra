@@ -43,15 +43,16 @@ public class ConnectedGraph {
     final Point dSW = new Point(-1, 1);
     final Point dW  = new Point(-1, 0);
 
-    // Clarify magic numbers
-    final int dirNumE  = 1;
-    final int dirNumSE = 2;
-    final int dirNumS  = 3;
-    final int dirNumSW = 4;
+    // Neighborhood direction numbers
+    final int dirNumE  = 0;
+    final int dirNumSE = 1;
+    final int dirNumS  = 2;
+    final int dirNumSW = 3;
 
     // Assign a neighborhood to all non-wall pixels.
     for (Point point : image.getPixelPositions()) {
       if (image.isTraversableAt(point)) {
+        System.out.println(point + " traversable");
         // Non-wall pixel to the East is always traversable.
         if (image.isTraversableAt(Point.add(point, dE))) {
           addEdge(image.getIndexForPixel(point),
@@ -79,8 +80,8 @@ public class ConnectedGraph {
         // Non-wall pixel to the South-West is traversable unless there's a
         // corner in between.
         if (image.isTraversableAt(Point.add(point, dSW))
-            && image.isTraversableAt(Point.add(point, dW))
-            && image.isTraversableAt(Point.add(point, dE))) {
+            && image.isTraversableAt(Point.add(point, dS))
+            && image.isTraversableAt(Point.add(point, dW))) {
           addEdge(image.getIndexForPixel(point),
                   image.getIndexForPixel(Point.add(point, dSW)),
                   dirNumSW, Math.sqrt(2.0));
@@ -117,7 +118,6 @@ public class ConnectedGraph {
    */
   public void addEdge(final int nodeIndex, final int neighborIndex,
                       final int direction, final double weight) {
-
     if (nodeIndex >= 0 && nodeIndex < edges.length
         && neighborIndex >= 0 && neighborIndex < edges.length
         && direction >= 0 && direction < numberOfNeighborhoods) {
@@ -127,8 +127,8 @@ public class ConnectedGraph {
       // Set the opposite direction as well.
       int otherDirection = (direction + numberOfNeighborhoods / 2)
                            % numberOfNeighborhoods;
-      edges[nodeIndex][otherDirection] =
-          new Edge(nodeIndex, neighborIndex, weight);
+      edges[neighborIndex][otherDirection] =
+          new Edge(neighborIndex, nodeIndex, weight);
     }
   }
 
