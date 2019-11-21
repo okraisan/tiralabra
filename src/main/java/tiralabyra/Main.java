@@ -1,8 +1,5 @@
 package tiralabyra;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public final class Main {
 
   /**
@@ -10,6 +7,14 @@ public final class Main {
    */
   @SuppressWarnings("unused")
   private Main() {
+  }
+
+  /**
+   * Alias for System.out.println().
+   * @param args Objects to print.
+   */
+  public static void sop(final Object... args) {
+    System.out.println(args[0]);
   }
 
   /**
@@ -23,38 +28,29 @@ public final class Main {
     final String outFileName = "C:\\Users\\windy\\Pictures\\labyra_out.png";
 
     Image image = new tiralabyra.Image(inFileName);
+
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
+    AStar astar = new AStar();
+    AStarResult result = astar.solve(graph);
 
-    // Breadth-first search, just for demonstation.
-    boolean[] isVisited = new boolean[image.getNumberOfPixels()];
-    int[]     parent    = new int[image.getNumberOfPixels()];
+    if (result.wasSolved()) {
+      // Backtrack.
 
-    Queue<Integer> fillQueue = new LinkedList<Integer>();
-    fillQueue.add(new Integer(graph.getEntryNodeIndex()));
+      int[] parent = result.getParents();
 
-    while (fillQueue.size() > 0) {
-      int nodeIndex = fillQueue.remove();
-      if (nodeIndex == graph.getExitNodeIndex()) {
-        break;
-      }
-
-      for (Edge edge : graph.getEdgesFrom(nodeIndex)) {
-        if (edge != null && edge.getNode2() != -1
-            && !isVisited[edge.getNode2()]) {
-          isVisited[edge.getNode2()] = true;
-          parent[edge.getNode2()] = nodeIndex;
-          fillQueue.add(edge.getNode2());
+      int backtrackIndex = graph.getExitNodeIndex();
+      while (backtrackIndex != graph.getEntryNodeIndex()) {
+        image.plotPathAroundIndex(backtrackIndex, backtrackColor);
+        if (parent[backtrackIndex] == backtrackIndex) {
+          break;
         }
+        backtrackIndex = parent[backtrackIndex];
       }
-    }
 
-    // Backtrack.
-    int backtrackIndex = graph.getExitNodeIndex();
-    while (backtrackIndex != graph.getEntryNodeIndex()) {
-      image.plotPathAroundIndex(backtrackIndex, backtrackColor);
-      backtrackIndex = parent[backtrackIndex];
+      System.out.println("Solved");
+      image.save(outFileName);
+    } else {
+      System.out.println("This labyrinth can't be solved.");
     }
-
-    image.save(outFileName);
   }
 }

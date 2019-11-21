@@ -52,7 +52,7 @@ public class ConnectedGraph {
     // Assign a neighborhood to all non-wall pixels.
     for (Point point : image.getPixelPositions()) {
       if (image.isTraversableAt(point)) {
-        System.out.println(point + " traversable");
+        //System.out.println(point + " traversable");
         // Non-wall pixel to the East is always traversable.
         if (image.isTraversableAt(Point.add(point, dE))) {
           addEdge(image.getIndexForPixel(point),
@@ -144,6 +144,13 @@ public class ConnectedGraph {
    */
   public int getExitNodeIndex() {
     return exitNodeIndex;
+  }
+
+  /**
+   * @return Total number of edges.
+   */
+  public int size() {
+    return edges.length;
   }
 
   /**

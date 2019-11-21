@@ -104,7 +104,7 @@ public class Image {
     Point centerPoint = new Point(index % bufferedImage.getWidth(),
                                   index / bufferedImage.getWidth());
 
-    final int brushRadius = 0;
+    final int brushRadius = 1;
 
     for (int deltaY = -brushRadius; deltaY <= brushRadius; deltaY++) {
       for (int deltaX = -brushRadius; deltaX <= brushRadius; deltaX++) {
@@ -161,7 +161,6 @@ public class Image {
    */
   public void save(final String path) {
     try {
-      System.out.println("Save");
       ImageIO.write(bufferedImage, "png", new File(path));
     } catch (IOException e) {
       System.out.println("Can't open file for writing");
