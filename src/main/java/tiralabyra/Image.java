@@ -132,7 +132,7 @@ public class Image {
    */
   public boolean isTraversableAt(final Point point) {
     return (containsPosition(point)
-            && bufferedImage.getRGB(point.getX(),  point.getY()) != wallColor);
+            && bufferedImage.getRGB(point.getX(), point.getY()) != wallColor);
   }
 
   /**
