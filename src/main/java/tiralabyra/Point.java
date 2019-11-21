@@ -43,4 +43,11 @@ public class Point {
   static Point add(final Point a, final Point b) {
     return new Point(a.getX() + b.getX(), a.getY() + b.getY());
   }
+
+  /**
+   * @return String representation.
+   */
+  public String toString() {
+    return "(" + posX + "," + posY + ")";
+  }
 }
