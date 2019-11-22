@@ -10,7 +10,7 @@ public final class Main {
   }
 
   /**
-   * Alias for System.out.println().
+   * Easy alias for System.out.println().
    * @param args Objects to print.
    */
   public static void sop(final Object... args) {
