@@ -7,9 +7,15 @@ import org.junit.Test;
 
 public class ImageTest {
   /**
-   * Test image, in the class to be tested.
+   * A test image, in the class to be tested.
    */
-  private Image testImage;
+  private Image testImage1;
+
+  /**
+   * A test image, in the class to be tested.
+   */
+  private Image testImage2;
+
 
   /**
    * The test image should have an entry point here.
@@ -27,7 +33,8 @@ public class ImageTest {
    */
   @Before
   public void setUp() throws Exception {
-    testImage = new Image("src/test/resources/testImage1.png");
+    testImage1 = new Image("src/test/resources/testImage1.png");
+    testImage2 = new Image("src/test/resources/testImage2.png");
   }
 
   /**
@@ -35,7 +42,8 @@ public class ImageTest {
    */
   @Test
   public void imageHasEntryPoint() {
-    assertEquals(true, testImage.hasEntryPointAt(correctEntryPoint));
+    assertEquals(true, testImage1.hasEntryPointAt(correctEntryPoint));
+    assertEquals(true, !testImage2.hasEntryPointAt(correctEntryPoint));
   }
 
   /**
@@ -43,7 +51,8 @@ public class ImageTest {
    */
   @Test
   public void imageHasExitPoint() {
-    assertEquals(true, testImage.hasExitPointAt(correctExitPoint));
+    assertEquals(true, testImage1.hasExitPointAt(correctExitPoint));
+    assertEquals(true, !testImage2.hasExitPointAt(correctExitPoint));
   }
 
 }

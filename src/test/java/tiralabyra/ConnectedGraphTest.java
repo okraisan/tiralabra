@@ -7,14 +7,14 @@ import org.junit.Test;
 
 public class ConnectedGraphTest {
   /**
-   * Test image, internal Java representation.
+   * A test image of a labyrinth that has an entry and exit point.
    */
-  private Image testImage;
+  private Image testImage1;
 
   /**
    * The graph created from the test image.
    */
-  private ConnectedGraph testGraph;
+  private ConnectedGraph testGraph1;
 
   /**
    * Index of the entry node should be...
@@ -33,8 +33,8 @@ public class ConnectedGraphTest {
    */
   @Before
   public void setUp() throws Exception {
-    testImage = new Image("src/test/resources/testImage1.png");
-    testGraph = new ConnectedGraph(testImage);
+    testImage1 = new Image("src/test/resources/testImage1.png");
+    testGraph1 = new ConnectedGraph(testImage1);
   }
 
   /**
@@ -42,7 +42,7 @@ public class ConnectedGraphTest {
    */
   @Test
   public void hasCorrectEntryNode() {
-    assertEquals(correctEntryNodeIndex, testGraph.getEntryNodeIndex());
+    assertEquals(correctEntryNodeIndex, testGraph1.getEntryNodeIndex());
   }
 
   /**
@@ -50,6 +50,6 @@ public class ConnectedGraphTest {
    */
   @Test
   public void hasCorrectExitNode() {
-    assertEquals(correctExitNodeIndex, testGraph.getExitNodeIndex());
+    assertEquals(correctExitNodeIndex, testGraph1.getExitNodeIndex());
   }
 }
