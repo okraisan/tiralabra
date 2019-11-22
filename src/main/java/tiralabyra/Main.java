@@ -40,10 +40,7 @@ public final class Main {
 
       int backtrackIndex = graph.getExitNodeIndex();
       while (backtrackIndex != graph.getEntryNodeIndex()) {
-        image.plotPathAroundIndex(backtrackIndex, backtrackColor);
-        if (parent[backtrackIndex] == backtrackIndex) {
-          break;
-        }
+        image.plotPathAroundIndex(backtrackIndex, 0, backtrackColor);
         backtrackIndex = parent[backtrackIndex];
       }
 

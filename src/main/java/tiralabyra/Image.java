@@ -98,13 +98,13 @@ public class Image {
    * around a path for better clarity.
    * @param index Linear index pointing to the center pixel of the drawing
    * action.
+   * @param brushRadius Size of the drawing brush.
    * @param color Which color to use.
    */
-  public void plotPathAroundIndex(final int index, final int color) {
+  public void plotPathAroundIndex(final int index, final int brushRadius,
+                                  final int color) {
     Point centerPoint = new Point(index % bufferedImage.getWidth(),
                                   index / bufferedImage.getWidth());
-
-    final int brushRadius = 1;
 
     for (int deltaY = -brushRadius; deltaY <= brushRadius; deltaY++) {
       for (int deltaX = -brushRadius; deltaX <= brushRadius; deltaX++) {
