@@ -2,20 +2,10 @@ package tiralabyra;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.ByteArrayInputStream;
-
-import javax.imageio.ImageIO;
-
 import org.junit.Before;
 import org.junit.Test;
 
 public class ConnectedGraphTest {
-
-  /**
-   * Test image as a bitmap byte array.
-   */
-  private byte[] testImageBytes;
-
   /**
    * Test image, internal Java representation.
    */
@@ -27,24 +17,23 @@ public class ConnectedGraphTest {
   private ConnectedGraph testGraph;
 
   /**
+   * Index of the entry node should be...
+   */
+  private final int correctEntryNodeIndex = 17;
+
+  /**
+   * Index of the exit node should be...
+   */
+  private final int correctExitNodeIndex  = 36;
+
+  /**
    * Set up variables.
    * @throws Exception IOException in case of failed IO from the test
    *                   image (unlikely).
    */
   @Before
   public void setUp() throws Exception {
-
-    final byte bFF = (byte) 0xFF;
-    final byte b00 = (byte) 0x00;
-    testImageBytes = new byte[] {
-        b00, b00, bFF, bFF,
-        b00, b00, b00, bFF,
-        bFF, bFF, bFF, bFF,
-        b00, bFF, b00, bFF
-    };
-
-    testImage =
-        new Image(ImageIO.read(new ByteArrayInputStream(testImageBytes)));
+    testImage = new Image("src/test/resources/testImage1.png");
     testGraph = new ConnectedGraph(testImage);
   }
 
@@ -53,7 +42,7 @@ public class ConnectedGraphTest {
    */
   @Test
   public void hasCorrectEntryNode() {
-    assertEquals(0, testGraph.getEntryNodeIndex());
+    assertEquals(correctEntryNodeIndex, testGraph.getEntryNodeIndex());
   }
 
   /**
@@ -61,6 +50,6 @@ public class ConnectedGraphTest {
    */
   @Test
   public void hasCorrectExitNode() {
-    assertEquals(3, testGraph.getExitNodeIndex());
+    assertEquals(correctExitNodeIndex, testGraph.getExitNodeIndex());
   }
 }

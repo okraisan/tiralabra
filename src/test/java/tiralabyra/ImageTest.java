@@ -2,58 +2,32 @@ package tiralabyra;
 
 import static org.junit.Assert.assertEquals;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-
-import javax.imageio.ImageIO;
-
 import org.junit.Before;
 import org.junit.Test;
 
 public class ImageTest {
-
-  /**
-   * Test image as a bitmap byte array.
-   */
-  private byte[] testImageBytes;
-
-  /**
-   * Test image, Java internal representation.
-   */
-  private BufferedImage testImageBuffer;
-
   /**
    * Test image, in the class to be tested.
    */
   private Image testImage;
 
   /**
+   * The test image should have an entry point here.
+   */
+  private final Point correctEntryPoint = new Point(7, 1);
+
+  /**
+   * The test image should have an exit point here.
+   */
+  private final Point correctExitPoint  = new Point(6, 3);
+
+  /**
    * Set up test data.
-   * @throws Exception IOException in case the hardcoded test data can't be read
-   *         (unlikely).
+   * @throws Exception IOException in case the test data can't be read.
    */
   @Before
   public void setUp() throws Exception {
-
-    /*
-     * The test image is a 2x2 "labyrinth" with one entry pixel (E),
-     * one wall (W), one traversable pixel (.) and one exit pixel (X).
-     *
-     *   EW
-     *   .X
-     *
-     */
-    final byte bFF = (byte) 0xFF;
-    final byte b00 = (byte) 0x00;
-    testImageBytes = new byte[] {
-        b00, b00, bFF, bFF,
-        b00, b00, b00, bFF,
-        bFF, bFF, bFF, bFF,
-        b00, bFF, b00, bFF
-    };
-
-    testImageBuffer = ImageIO.read(new ByteArrayInputStream(testImageBytes));
-    testImage = new Image(testImageBuffer);
+    testImage = new Image("src/test/resources/testImage1.png");
   }
 
   /**
@@ -61,7 +35,15 @@ public class ImageTest {
    */
   @Test
   public void imageHasEntryPoint() {
-    assertEquals(true, testImage.hasEntryPointAt(new Point(0, 0)));
+    assertEquals(true, testImage.hasEntryPointAt(correctEntryPoint));
+  }
+
+  /**
+   * The exit point in the test image must be recognized.
+   */
+  @Test
+  public void imageHasExitPoint() {
+    assertEquals(true, testImage.hasExitPointAt(correctExitPoint));
   }
 
 }
