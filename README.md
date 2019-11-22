@@ -4,6 +4,7 @@ Labyrinttiratkaisija tiralabraan.
 
 * [Määrittelydokumentti](doc/maarittely.md)
 * [Toteutusdokumentti](doc/toteutus.md)
+* [Testausdokumentti](doc/testaus.md)
 * [Viikkoraportti 1](doc/viikkoraportti1.md)
 * [Viikkoraportti 2](doc/viikkoraportti2.md)
 * [Viikkoraportti 3](doc/viikkoraportti3.md)
