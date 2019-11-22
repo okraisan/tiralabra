@@ -47,7 +47,7 @@ public final class Main {
         backtrackIndex = parent[backtrackIndex];
       }
 
-      System.out.println("Solved");
+      System.out.println("Solved; path length " + result.getLength() + " px");
       image.save(outFileName);
     } else {
       System.out.println("This labyrinth can't be solved.");

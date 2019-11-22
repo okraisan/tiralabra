@@ -32,12 +32,13 @@ public class AStar {
       PrioNode node = fillQueue.remove();
       if (node.getIndex() == graph.getExitNodeIndex()) {
         result.setSolved(true);
+        result.setLength(totalDist[node.getIndex()]);
         break;
       }
 
       for (Edge edge : graph.getEdgesFrom(node.getIndex())) {
         int neighborIndex = edge.getNode2();
-        // A valid, ?(non-visited) edge
+
         if (edge != null && neighborIndex != -1) {
           double neighborsTotalDistance =
               totalDist[node.getIndex()] + edge.getWeight();
