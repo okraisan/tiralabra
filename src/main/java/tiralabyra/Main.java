@@ -31,7 +31,7 @@ public final class Main {
 
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
     AStar astar = new AStar();
-    AStarResult result = astar.solve(graph);
+    SolvedResult result = astar.solve(graph);
 
     if (result.wasSolved()) {
       // Backtrack.

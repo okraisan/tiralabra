@@ -12,9 +12,9 @@ public class AStar {
 
   /**
    * @param graph The graph to be solved.
-   * @return Result with solvability flag and parenthood array.
+   * @return Result with solvability flag and backtrack array.
    */
-  public AStarResult solve(final ConnectedGraph graph) {
+  public SolvedResult solve(final ConnectedGraph graph) {
     int[]     parent    = new int[graph.size()];
     double[]  totalDist = new double[graph.size()];
 
@@ -26,7 +26,7 @@ public class AStar {
     PriorityQueue<PrioNode> fillQueue = new PriorityQueue<PrioNode>();
     fillQueue.add(new PrioNode(graph.getEntryNodeIndex(), 0));
 
-    AStarResult result = new AStarResult();
+    SolvedResult result = new SolvedResult();
 
     while (fillQueue.size() > 0) {
       PrioNode node = fillQueue.remove();
