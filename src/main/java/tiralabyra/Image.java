@@ -52,28 +52,20 @@ public class Image {
     bufferedImage = buf;
   }
 
-  /**
-   * @return Image width in pixels.
-   */
   public int getWidth() {
     return bufferedImage.getWidth();
   }
 
-  /**
-   * @return Image height in pixels.
-   */
   public int getHeight() {
     return bufferedImage.getHeight();
   }
 
-  /**
-   * @return Total area of the image, in pixels.
-   */
   public int getNumberOfPixels() {
     return bufferedImage.getWidth() * bufferedImage.getHeight();
   }
 
   /**
+   * Get a linear index for any pixel, starting from 0 at the top-left.
    * @param point XY position of the pixel on the image.
    * @return A linear index for the given pixel coordinates.
    */
@@ -82,6 +74,7 @@ public class Image {
   }
 
   /**
+   * Generate point objects for all pixels in this image.
    * @return A list of all possible pixels on the image.
    */
   public Point[] getPixelPositions() {
@@ -99,7 +92,7 @@ public class Image {
    * pixel index. Wall pixels are left as is. Used to draw thicker lines
    * around a path for better clarity.
    * @param index Linear index pointing to the center pixel of the drawing
-   * action.
+   *     action.
    * @param brushRadius Size of the drawing brush.
    * @param color Which color to use.
    */

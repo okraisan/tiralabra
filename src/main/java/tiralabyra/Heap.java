@@ -15,6 +15,10 @@ public class Heap {
     return (index - 1) / 2;
   }
   
+  /**
+   * @param index Which node to ask child for.
+   * @return Index to left child, or -1 if nonexistent.
+   */
   public int getLeftChild(int index) {
     if (2 * index + 1 >= size) {
       return -1;

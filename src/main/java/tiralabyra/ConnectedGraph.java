@@ -26,7 +26,7 @@ public class ConnectedGraph {
    * Build a connected graph based on an input image, with all neighborhoods
    * and input/exit nodes in place.
    * @param image Input image with correctly color-labeled walls and entry/exit
-   * points.
+   *     points.
    */
   public ConnectedGraph(final Image image) {
     edges = new Edge[image.getNumberOfPixels()][numberOfNeighborhoods];
@@ -146,9 +146,6 @@ public class ConnectedGraph {
     return exitNodeIndex;
   }
 
-  /**
-   * @return Total number of edges.
-   */
   public int size() {
     return edges.length;
   }
