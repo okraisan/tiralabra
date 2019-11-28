@@ -30,7 +30,9 @@ public class Image {
   private BufferedImage bufferedImage;
 
   /**
-   * Read an image from a given file.
+   * Read an image from a given file. This should be an RGB bitmap.
+   * The entry should be colored with entryPointColor and the exit with
+   * exitPointColor. Walls should be wallColor.
    * @param path Filesystem path to the input file.
    */
   public Image(final String path) {
