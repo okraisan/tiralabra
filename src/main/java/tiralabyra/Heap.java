@@ -4,11 +4,11 @@ public class Heap {
   
   private int maxSize = 0;
   private int size = 0;
-  private double[] data;
+  private PrioNode[] data;
   
   public Heap(int maxSz) {
     maxSize = maxSz;
-    data = new double[maxSz];
+    data = new PrioNode[maxSz];
   }
   
   public int getParent(int index) {
@@ -35,31 +35,35 @@ public class Heap {
     int l = getLeftChild(index);
     int r = getRightChild(index);
     int next;
-    if (l >= 0 && l < size - 1 && data[l] < data[index]) {
+    if (l > 0 && l < size && data[l].compareTo(data[index]) < 0) {
       next = l;
     } else {
       next = index;
     }
-    if (r >= 0 && r < size - 1 && data[r] < data[next]) {
+    if (r > 0 && r < size && data[r].compareTo(data[next]) < 0) {
       next = r;
     }
     if (next != index) {
-      double tmp = data[index];
+      PrioNode tmp = data[index];
       data[index] = data[next];
       data[next] = tmp;
       heapify(next);
     }
   }
   
-  public void insert(double val) {
+  public void insert(PrioNode newnode) {
     // if (size == maxSz) throw exception
     size++;
     int index = size - 1;
-    while (index > 0 && data[getParent(index)] > val) {
+    while (index > 0 && data[getParent(index)].compareTo(newnode) > 0) {
       data[index] = data[getParent(index)];
       index = getParent(index);
     }
-    data[index] = val;
+    data[index] = newnode;
+  }
+  
+  public int size() {
+    return size;
   }
   
   public String toString() {
@@ -74,9 +78,9 @@ public class Heap {
     return result;
   }
   
-  public double removeMin() {
+  public PrioNode removeMin() {
     // todo throw exception if empty
-    double min = data[0];
+    PrioNode min = data[0];
     data[0] = data[size - 1];
     size--;
     heapify(0);

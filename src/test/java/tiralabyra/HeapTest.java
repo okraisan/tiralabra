@@ -15,56 +15,68 @@ public class HeapTest {
   }
 
   @Test
-  public void testRemovalOrder1() {
-    System.out.println(heap);
-    heap.insert(5.0);
-    System.out.println(heap);
-    heap.insert(1.0);
-    System.out.println(heap);
-    heap.insert(8.0);
-    System.out.println(heap);
-    heap.insert(1000.0);
-    System.out.println(heap);
-    heap.insert(0.0);
-    System.out.println(heap);
-    heap.insert(-0.5);
-    System.out.println(heap);
-    
-    assertEquals(-0.5, heap.removeMin(), 1e-6);
-    assertEquals(0.0, heap.removeMin(), 1e-6);
-    assertEquals(1.0, heap.removeMin(), 1e-6);
-    assertEquals(5.0, heap.removeMin(), 1e-6);
-    assertEquals(8.0, heap.removeMin(), 1e-6);
-    assertEquals(1000.0, heap.removeMin(), 1e-6);
+  public void testRemovalOrderWhenInsertedSmallestLast() {
+    heap.insert(new PrioNode(1, 1000.0));
+    heap.insert(new PrioNode(2, 8.0));
+    heap.insert(new PrioNode(3, 5.0));
+    heap.insert(new PrioNode(4, 1.0));
+    heap.insert(new PrioNode(5, 0.0));
+    heap.insert(new PrioNode(6, -0.5));
+
+    assertEquals(6, heap.removeMin().getIndex());
+    assertEquals(5, heap.removeMin().getIndex());
+    assertEquals(4, heap.removeMin().getIndex());
+    assertEquals(3, heap.removeMin().getIndex());
+    assertEquals(2, heap.removeMin().getIndex());
+    assertEquals(1, heap.removeMin().getIndex());
   }
   
   @Test
-  public void testRemovalOrder2() {
-    heap.insert(-0.5);
-    heap.insert(5.0);
-    heap.insert(1.0);
-    heap.insert(8.0);
-    heap.insert(1000.0);
-    heap.insert(0.0);
-    
-    assertEquals(-0.5, heap.removeMin(), 1e-6);
-    assertEquals(0.0, heap.removeMin(), 1e-6);
-    assertEquals(1.0, heap.removeMin(), 1e-6);
-    assertEquals(5.0, heap.removeMin(), 1e-6);
-    assertEquals(8.0, heap.removeMin(), 1e-6);
-    assertEquals(1000.0, heap.removeMin(), 1e-6);
+  public void testRemovalOrderWhenInsertedSmallestFirst() {
+    heap.insert(new PrioNode(1, -0.5));
+    heap.insert(new PrioNode(2, 0.0));
+    heap.insert(new PrioNode(3, 1.0));
+    heap.insert(new PrioNode(4, 5.0));
+    heap.insert(new PrioNode(5, 8.0));
+    heap.insert(new PrioNode(6, 1000.0));
+
+    assertEquals(1, heap.removeMin().getIndex());
+    assertEquals(2, heap.removeMin().getIndex());
+    assertEquals(3, heap.removeMin().getIndex());
+    assertEquals(4, heap.removeMin().getIndex());
+    assertEquals(5, heap.removeMin().getIndex());
+    assertEquals(6, heap.removeMin().getIndex());
+  }
+  
+  @Test
+  public void testRemovalOrderWhenInsertedOutOfOrder() {
+    heap.insert(new PrioNode(1, 5.0));
+    heap.insert(new PrioNode(2, 8.0));
+    heap.insert(new PrioNode(3, -0.5));
+    heap.insert(new PrioNode(4, 0.0));
+    heap.insert(new PrioNode(5, 1000.0));
+    heap.insert(new PrioNode(6, 1.0));
+
+    assertEquals(3, heap.removeMin().getIndex());
+    assertEquals(4, heap.removeMin().getIndex());
+    assertEquals(6, heap.removeMin().getIndex());
+    assertEquals(1, heap.removeMin().getIndex());
+    assertEquals(2, heap.removeMin().getIndex());
+    assertEquals(5, heap.removeMin().getIndex());
   }
   
   @Test
   public void testParentIndices() {
-    heap.insert(-0.5);
-    heap.insert(5.0);
-    heap.insert(1.0);
-    heap.insert(8.0);
-    heap.insert(1000.0);
-    heap.insert(0.0);
-    heap.insert(0.0);
-    heap.insert(0.0);
+    heap.insert(new PrioNode(1, 1000.0));
+    heap.insert(new PrioNode(2, 8.0));
+    heap.insert(new PrioNode(3, 1.0));
+    heap.insert(new PrioNode(4, 0.0));
+    heap.insert(new PrioNode(5, 5.0));
+    heap.insert(new PrioNode(6, -0.5));
+    heap.insert(new PrioNode(7, -0.5));
+    heap.insert(new PrioNode(8, -0.5));
+    heap.insert(new PrioNode(9, -0.5));
+    
     assertEquals(0, heap.getParent(1));
     assertEquals(0, heap.getParent(2));
     assertEquals(1, heap.getParent(3));
@@ -78,15 +90,16 @@ public class HeapTest {
   
   @Test
   public void testChildIndices() {
-    heap.insert(-0.5);
-    heap.insert(5.0);
-    heap.insert(1.0);
-    heap.insert(8.0);
-    heap.insert(1000.0);
-    heap.insert(0.0);
-    heap.insert(0.0);
-    heap.insert(0.0);
-    heap.insert(0.0);
+    heap.insert(new PrioNode(1, 1000.0));
+    heap.insert(new PrioNode(2, 8.0));
+    heap.insert(new PrioNode(3, 1.0));
+    heap.insert(new PrioNode(4, 0.0));
+    heap.insert(new PrioNode(5, 5.0));
+    heap.insert(new PrioNode(6, -0.5));
+    heap.insert(new PrioNode(7, -0.5));
+    heap.insert(new PrioNode(8, -0.5));
+    heap.insert(new PrioNode(9, -0.5));
+    
     assertEquals(1, heap.getLeftChild(0));
     assertEquals(2, heap.getRightChild(0));
     assertEquals(3, heap.getLeftChild(1));

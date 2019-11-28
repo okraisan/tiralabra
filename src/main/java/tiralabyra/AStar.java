@@ -1,7 +1,5 @@
 package tiralabyra;
 
-import java.util.PriorityQueue;
-
 public class AStar {
 
   /**
@@ -23,13 +21,13 @@ public class AStar {
     }
     totalDist[graph.getEntryNodeIndex()] = 0;
 
-    PriorityQueue<PrioNode> fillQueue = new PriorityQueue<PrioNode>();
-    fillQueue.add(new PrioNode(graph.getEntryNodeIndex(), 0));
+    Heap prioHeap = new Heap(graph.size());
+    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0));
 
     SolvedResult result = new SolvedResult();
 
-    while (fillQueue.size() > 0) {
-      PrioNode node = fillQueue.remove();
+    while (prioHeap.size() > 0) {
+      PrioNode node = prioHeap.removeMin();
       if (node.getIndex() == graph.getExitNodeIndex()) {
         result.setSolved(true);
         result.setLength(totalDist[node.getIndex()]);
@@ -45,7 +43,8 @@ public class AStar {
 
           if (neighborsTotalDistance < totalDist[neighborIndex]) {
             parent[neighborIndex] = node.getIndex();
-            fillQueue.add(new PrioNode(neighborIndex, neighborsTotalDistance));
+            prioHeap.insert(
+                new PrioNode(neighborIndex, neighborsTotalDistance));
             totalDist[neighborIndex] = neighborsTotalDistance;
           }
         }
