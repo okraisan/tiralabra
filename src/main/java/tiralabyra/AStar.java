@@ -14,16 +14,16 @@ public class AStar {
    * @return Result with solvability flag and backtrack array.
    */
   public SolvedResult solve(ConnectedGraph graph) {
-    int[]     parent    = new int[graph.size()];
-    double[]  totalDist = new double[graph.size()];
+    int[]     parent = new int[graph.size()];
+    double[]  traveledDistance = new double[graph.size()];
 
-    for (int i = 0; i < totalDist.length; i++) {
-      totalDist[i] = Double.POSITIVE_INFINITY;
+    for (int i = 0; i < traveledDistance.length; i++) {
+      traveledDistance[i] = Double.POSITIVE_INFINITY;
     }
-    totalDist[graph.getEntryNodeIndex()] = 0;
+    traveledDistance[graph.getEntryNodeIndex()] = 0;
 
     MinHeap prioHeap = new MinHeap();
-    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0));
+    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0, graph.getEuclideanDistanceToExit(0)));
 
     SolvedResult result = new SolvedResult();
 
@@ -31,7 +31,7 @@ public class AStar {
       PrioNode node = prioHeap.removeMin();
       if (node.getIndex() == graph.getExitNodeIndex()) {
         result.setSolved(true);
-        result.setLength(totalDist[node.getIndex()]);
+        result.setLength(traveledDistance[node.getIndex()]);
         break;
       }
 
@@ -39,14 +39,16 @@ public class AStar {
         int neighborIndex = edge.getNode2();
 
         if (edge != null && neighborIndex != -1) {
-          double neighborsTotalDistance =
-              totalDist[node.getIndex()] + edge.getWeight();
+          double neighborsTraveledDistance =
+              traveledDistance[node.getIndex()] + edge.getWeight();
+          double neighborsEstimatedTotalDistance =
+              neighborsTraveledDistance + graph.getEuclideanDistanceToExit(neighborIndex);
 
-          if (neighborsTotalDistance < totalDist[neighborIndex]) {
+          if (neighborsEstimatedTotalDistance < traveledDistance[neighborIndex] + graph.getEuclideanDistanceToExit(neighborIndex)) {
             parent[neighborIndex] = node.getIndex();
             prioHeap.insert(
-                new PrioNode(neighborIndex, neighborsTotalDistance));
-            totalDist[neighborIndex] = neighborsTotalDistance;
+                new PrioNode(neighborIndex, neighborsEstimatedTotalDistance));
+            traveledDistance[neighborIndex] = neighborsTraveledDistance;
           }
         }
       }

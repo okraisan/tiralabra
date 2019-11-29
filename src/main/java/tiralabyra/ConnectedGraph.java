@@ -3,6 +3,7 @@ package tiralabyra;
 public class ConnectedGraph {
 
   private Edge[][] edges;
+  private double[] euclideanDistancesToExit;
 
   private int entryNodeIndex = -1;
   private int exitNodeIndex = -1;
@@ -38,6 +39,8 @@ public class ConnectedGraph {
     final int dirNumSE = 1;
     final int dirNumS  = 2;
     final int dirNumSW = 3;
+
+    Point exitPoint = new Point(0, 0);
 
     // Assign a neighborhood to all non-wall pixels.
     for (Point point : image.getPixelPositions()) {
@@ -84,7 +87,9 @@ public class ConnectedGraph {
       }
       if (image.hasExitPointAt(point)) {
         exitNodeIndex = image.getIndexForPixel(point);
+        exitPoint = point;
       }
+
     }
 
     if (entryNodeIndex == -1) {
@@ -96,6 +101,11 @@ public class ConnectedGraph {
       System.out.println("Labyrinth has no exit point. Please color one "
                          + "pixel as #00FF00.");
       return;
+    }
+
+    euclideanDistancesToExit = new double[image.getNumberOfPixels()];
+    for (Point point : image.getPixelPositions()) {
+      euclideanDistancesToExit[image.getIndexForPixel(point)] = point.distanceTo(exitPoint);
     }
   }
 
@@ -141,5 +151,9 @@ public class ConnectedGraph {
    */
   public Edge[] getEdgesFrom(int nodeIndex) {
     return edges[nodeIndex];
+  }
+
+  public double getEuclideanDistanceToExit(int nodeIndex) {
+    return euclideanDistancesToExit[nodeIndex];
   }
 }

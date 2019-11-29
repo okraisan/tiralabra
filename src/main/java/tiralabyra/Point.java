@@ -32,6 +32,16 @@ public class Point {
     return new Point(a.getX() + b.getX(), a.getY() + b.getY());
   }
 
+  /**
+   * Euclidean distance to another point.
+   */
+  public double distanceTo(Point other) {
+    double dx = other.getX() - posX;
+    double dy = other.getY() - posY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  @Override
   public String toString() {
     return "(" + posX + "," + posY + ")";
   }
