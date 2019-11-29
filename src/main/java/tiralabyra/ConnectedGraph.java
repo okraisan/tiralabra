@@ -2,15 +2,10 @@ package tiralabyra;
 
 public class ConnectedGraph {
 
-  /**
-   * Edges (node-node neighborhoods) of this graph.
-   */
   private Edge[][] edges;
 
-  /**
-   * Which node is the entry point.
-   */
   private int entryNodeIndex = -1;
+  private int exitNodeIndex = -1;
 
   /**
    * Maximum number of neighbors a node can have.
@@ -18,17 +13,12 @@ public class ConnectedGraph {
   private final int numberOfNeighborhoods = 8;
 
   /**
-   * Which node is the exit point.
-   */
-  private int exitNodeIndex = -1;
-
-  /**
    * Build a connected graph based on an input image, with all neighborhoods
    * and input/exit nodes in place.
    * @param image Input image with correctly color-labeled walls and entry/exit
    *     points.
    */
-  public ConnectedGraph(final Image image) {
+  public ConnectedGraph(Image image) {
     edges = new Edge[image.getNumberOfPixels()][numberOfNeighborhoods];
     for (int i = 0; i < image.getNumberOfPixels(); i++) {
       for (int j = 0; j < numberOfNeighborhoods; j++) {
@@ -113,11 +103,11 @@ public class ConnectedGraph {
    * Add a bidirectional neighborhood for two nodes.
    * @param nodeIndex     Index of the originating node in the graph.
    * @param neighborIndex Index of the neighbor node in the graph.
-   * @param direction     Direction of neighborhood; used as an inner index.
+   * @param direction     Direction of neighborhood (0-7); used as an inner index.
    * @param weight        Edge weight (cost).
    */
-  public void addEdge(final int nodeIndex, final int neighborIndex,
-                      final int direction, final double weight) {
+  public void addEdge(int nodeIndex, int neighborIndex,
+                      int direction, double weight) {
     if (nodeIndex >= 0 && nodeIndex < edges.length
         && neighborIndex >= 0 && neighborIndex < edges.length
         && direction >= 0 && direction < numberOfNeighborhoods) {
@@ -132,16 +122,10 @@ public class ConnectedGraph {
     }
   }
 
-  /**
-   * @return Index of the entry node.
-   */
   public int getEntryNodeIndex() {
     return entryNodeIndex;
   }
 
-  /**
-   * @return Index of the exit node.
-   */
   public int getExitNodeIndex() {
     return exitNodeIndex;
   }
@@ -151,10 +135,11 @@ public class ConnectedGraph {
   }
 
   /**
+   * Get all edges connected to a certain node.
    * @param nodeIndex Index of the requested origin node.
    * @return An array of edges.
    */
-  public Edge[] getEdgesFrom(final int nodeIndex) {
+  public Edge[] getEdgesFrom(int nodeIndex) {
     return edges[nodeIndex];
   }
 }

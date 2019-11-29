@@ -9,10 +9,11 @@ public class AStar {
   }
 
   /**
+   * Solve paths through a connected graph using A*.
    * @param graph The graph to be solved.
    * @return Result with solvability flag and backtrack array.
    */
-  public SolvedResult solve(final ConnectedGraph graph) {
+  public SolvedResult solve(ConnectedGraph graph) {
     int[]     parent    = new int[graph.size()];
     double[]  totalDist = new double[graph.size()];
 

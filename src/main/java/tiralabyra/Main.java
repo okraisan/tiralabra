@@ -3,25 +3,9 @@ package tiralabyra;
 public final class Main {
 
   /**
-   * Private constructor for utility class, to satisfy Sun style.
-   */
-  @SuppressWarnings("unused")
-  private Main() {
-  }
-
-  /**
-   * Easy alias for System.out.println().
-   * @param args Objects to print.
-   */
-  public static void sop(final Object... args) {
-    System.out.println(args[0]);
-  }
-
-  /**
    * We start here.
-   * @param args Command line parameters.
    */
-  public static void main(final String[] args) {
+  public static void main(String[] args) {
 
     final int backtrackColor = 0xFFFF0000;
     final String inFileName  = "C:\\Users\\windy\\Pictures\\labyrintti.png";

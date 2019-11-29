@@ -1,35 +1,23 @@
 package tiralabyra;
 
 public class Point {
-  /**
-   * X position, in pixels.
-   */
   private int posX;
-
-  /**
-   * Y position, in pixels.
-   */
   private int posY;
 
   /**
+   * A point in 2D space with integer coordinates.
    * @param x X position, in pixels.
    * @param y Y position, in pixels.
    */
-  public Point(final int x, final int y) {
+  public Point(int x, int y) {
     posX = x;
     posY = y;
   }
 
-  /**
-   * @return X position, in pixels.
-   */
   public int getX() {
     return posX;
   }
 
-  /**
-   * @return Y position, in pixels.
-   */
   public int getY() {
     return posY;
   }
@@ -40,13 +28,10 @@ public class Point {
    * @param b Second point.
    * @return A point with the input points' coordinates summed up.
    */
-  static Point add(final Point a, final Point b) {
+  static Point add(Point a, Point b) {
     return new Point(a.getX() + b.getX(), a.getY() + b.getY());
   }
 
-  /**
-   * @return String representation.
-   */
   public String toString() {
     return "(" + posX + "," + posY + ")";
   }

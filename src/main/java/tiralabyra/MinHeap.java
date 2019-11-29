@@ -11,11 +11,16 @@ public class MinHeap {
     data = new PrioNode[maxSz];
   }
   
+  public int size() {
+    return size;
+  }
+  
   public int getParent(int index) {
     return (index - 1) / 2;
   }
   
   /**
+   * Get the index of this node's left child, or -1 if nonexistent.
    * @param index Which node to ask child for.
    * @return Index to left child, or -1 if nonexistent.
    */
@@ -27,6 +32,11 @@ public class MinHeap {
     }
   }
   
+  /**
+   * Get the index of this node's right child, or -1 if nonexistent.
+   * @param index Which node to ask child for.
+   * @return Index to right child, or -1 if nonexistent.
+   */
   public int getRightChild(int index) {
     if (2 * index + 2 >= size) {
       return -1;
@@ -35,6 +45,11 @@ public class MinHeap {
     }
   }
   
+  /**
+   * Recursively check that heap hierarchy is satisfied starting at a node
+   * index, and reorder if necessary.
+   * @param index Which node to start from.
+   */
   private void heapify(int index) {
     int l = getLeftChild(index);
     int r = getRightChild(index);
@@ -55,8 +70,11 @@ public class MinHeap {
     }
   }
   
+  /**
+   * Insert a new node into the heap.
+   */
   public void insert(PrioNode newnode) {
-    // if (size == maxSz) throw exception
+    // TODO if (size == maxSz) throw exception
     size++;
     int index = size - 1;
     while (index > 0 && data[getParent(index)].compareTo(newnode) > 0) {
@@ -66,10 +84,9 @@ public class MinHeap {
     data[index] = newnode;
   }
   
-  public int size() {
-    return size;
-  }
-  
+  /**
+   * A string representation of the heap as a linear array.
+   */
   public String toString() {
     String result = "[" + size + "/" + maxSize + "] ";
     for (int i = 0; i < size; i++) {
@@ -82,9 +99,12 @@ public class MinHeap {
     return result;
   }
   
+  /**
+   * Return and remove the first (smallest) element in the heap.
+   */
   public PrioNode removeMin() {
-    // todo throw exception if empty
-    PrioNode min = data[0];
+    // TODO throw exception if empty
+    final PrioNode min = data[0];
     data[0] = data[size - 1];
     size--;
     heapify(0);

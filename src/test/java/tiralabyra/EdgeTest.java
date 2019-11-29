@@ -7,9 +7,6 @@ import org.junit.Test;
 
 public class EdgeTest {
 
-  /**
-   * The test edge.
-   */
   private Edge edge;
 
   /**

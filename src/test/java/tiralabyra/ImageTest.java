@@ -6,16 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ImageTest {
-  /**
-   * A test image, in the class to be tested.
-   */
   private Image testImage1;
-
-  /**
-   * A test image, in the class to be tested.
-   */
   private Image testImage2;
-
 
   /**
    * The test image should have an entry point here.
@@ -41,7 +33,7 @@ public class ImageTest {
    * The entry point in the test image must be recognized.
    */
   @Test
-  public void imageHasEntryPoint() {
+  public void imageHasAnEntryPoint() {
     assertEquals(true, testImage1.hasEntryPointAt(correctEntryPoint));
     assertEquals(true, !testImage2.hasEntryPointAt(correctEntryPoint));
   }
@@ -50,7 +42,7 @@ public class ImageTest {
    * The exit point in the test image must be recognized.
    */
   @Test
-  public void imageHasExitPoint() {
+  public void imageHasAnExitPoint() {
     assertEquals(true, testImage1.hasExitPointAt(correctExitPoint));
     assertEquals(true, !testImage2.hasExitPointAt(correctExitPoint));
   }

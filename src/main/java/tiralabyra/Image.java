@@ -35,7 +35,7 @@ public class Image {
    * exitPointColor. Walls should be wallColor.
    * @param path Filesystem path to the input file.
    */
-  public Image(final String path) {
+  public Image(String path) {
     try {
       bufferedImage = ImageIO.read(new File(path));
     } catch (IOException e) {
@@ -46,9 +46,8 @@ public class Image {
 
   /**
    * Read an image from a BufferedImage.
-   * @param buf The input buffer.
    */
-  public Image(final BufferedImage buf) {
+  public Image(BufferedImage buf) {
     bufferedImage = buf;
   }
 
@@ -69,7 +68,7 @@ public class Image {
    * @param point XY position of the pixel on the image.
    * @return A linear index for the given pixel coordinates.
    */
-  public int getIndexForPixel(final Point point) {
+  public int getIndexForPixel(Point point) {
     return point.getY() * bufferedImage.getWidth() + point.getX();
   }
 
@@ -96,8 +95,7 @@ public class Image {
    * @param brushRadius Size of the drawing brush.
    * @param color Which color to use.
    */
-  public void plotPathAroundIndex(final int index, final int brushRadius,
-                                  final int color) {
+  public void plotPathAroundIndex(int index, int brushRadius, int color) {
     Point centerPoint = new Point(index % bufferedImage.getWidth(),
                                   index / bufferedImage.getWidth());
 
@@ -112,39 +110,43 @@ public class Image {
   }
 
   /**
-   * @return True if the given coordinates are inside the image boundary.
+   * This point is inside the image boundary.
    * @param point Coordinates of the requested pixel.
+   * @return True if the given coordinates are inside the image boundary.
    */
-  public boolean containsPosition(final Point point) {
+  public boolean containsPosition(Point point) {
     return (point.getX() >= 0 && point.getY() >= 0
             && point.getX() < bufferedImage.getWidth()
             && point.getY() < bufferedImage.getHeight());
   }
 
   /**
-   * @return True if there's a non-wall pixel at the given coordinates.
+   * There is a non-wall pixel at the given coordinates.
    * @param point Coordinates of the requested pixel.
+   * @return True if there's a non-wall pixel at the given coordinates.
    */
-  public boolean isTraversableAt(final Point point) {
+  public boolean isTraversableAt(Point point) {
     return (containsPosition(point)
             && bufferedImage.getRGB(point.getX(), point.getY()) != wallColor);
   }
 
   /**
-   * @return True if there's an entry point pixel at the given coordinates.
+   * There is an entry pixel at the give coordinates.
    * @param point Coordinates of the requested pixel.
+   * @return True if there's an entry point pixel at the given coordinates.
    */
-  public boolean hasEntryPointAt(final Point point) {
+  public boolean hasEntryPointAt(Point point) {
     return (containsPosition(point)
             && bufferedImage.getRGB(point.getX(), point.getY())
             == entryPointColor);
   }
 
   /**
-   * @return True if there's an exit point pixel at the given coordinates.
+   * There is an entry pixel at the give coordinates.
    * @param point Coordinates of the requested pixel.
+   * @return True if there's an exit point pixel at the given coordinates.
    */
-  public boolean hasExitPointAt(final Point point) {
+  public boolean hasExitPointAt(Point point) {
     return (containsPosition(point)
             && bufferedImage.getRGB(point.getX(), point.getY())
             == exitPointColor);
@@ -154,7 +156,7 @@ public class Image {
    * Save this image as a file.
    * @param path Filesystem path of the image to be written.
    */
-  public void save(final String path) {
+  public void save(String path) {
     try {
       ImageIO.write(bufferedImage, "png", new File(path));
     } catch (IOException e) {

@@ -2,9 +2,6 @@ package tiralabyra;
 
 public class SolvedResult {
 
-  /**
-   * Was the labyrinth successfully solved?
-   */
   private boolean solved = false;
 
   /**
@@ -17,61 +14,49 @@ public class SolvedResult {
    */
   private double length;
 
-  /**
-   * Results of a labyrinth solve; blank constructor.
-   */
   public SolvedResult() {
   }
 
   /**
    * Results of a labyrinth solve.
-   * @param sol Was the labyrinth successfully solved?
-   * @param par Backtrack path containing the parent index for each index.
-   * @param len Total geometric length of the solution.
+   * @param solved Was the labyrinth successfully solved?
+   * @param parents Backtrack path containing the parent index for each index.
+   * @param length Total geometric length of the solution.
    */
-  public SolvedResult(final boolean sol, final int[] par, final double len) {
-    solved = sol;
-    parents = par;
-    length = len;
+  public SolvedResult(boolean solved, int[] parents, double length) {
+    this.solved = solved;
+    this.parents = parents;
+    this.length = length;
+  }
+
+  public void setSolved(boolean solved) {
+    this.solved = solved;
   }
 
   /**
-   * @param sol Was the labyrinth successfully solved?
+   * Set a backtrack path containing the parent index for each index.
    */
-  public void setSolved(final boolean sol) {
-    solved = sol;
+  public void setParents(int[] parents) {
+    this.parents = parents;
   }
 
-  /**
-   * @param par Backtrack path containing the parent index for each index.
-   */
-  public void setParents(final int[] par) {
-    parents = par;
+  public void setLength(double length) {
+    this.length = length;
   }
 
-  /**
-   * @param len Total geometric length of the solution.
-   */
-  public void setLength(final double len) {
-    length = len;
-  }
-
-  /**
-   * @return Was the labyrinth successfully solved?
-   */
   public boolean wasSolved() {
     return solved;
   }
 
   /**
-   * @return Backtrack path containing the parent index for each index.
+   * Backtrack path containing the parent index for each index.
    */
   public int[] getParents() {
     return parents;
   }
 
   /**
-   * @return Total geometric length of the solution.
+   * Total geometric length of the solution.
    */
   public double getLength() {
     return length;

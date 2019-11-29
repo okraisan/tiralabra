@@ -13,27 +13,25 @@ public class PrioNode implements Comparable<PrioNode> {
   private double pathDistance;
 
   /**
+   * A graph node that is comparable to other nodes by total distance.
    * @param idx Index of this node in the graph.
    * @param dist Total distance to this node from the starting point.
    */
-  public PrioNode(final int idx, final double dist) {
+  public PrioNode(int idx, double dist) {
     index = idx;
     pathDistance = dist;
   }
 
-  /**
-   * @return Index of this node in the graph.
-   */
   public int getIndex() {
     return index;
   }
 
   /**
    * How this node is placed in a priority queue.
-   * @return A compareTo value.
    * @param n Another PrioNode.
+   * @return A compareTo value.
    */
-  public int compareTo(final PrioNode n) {
+  public int compareTo(PrioNode n) {
     if (this.pathDistance < n.pathDistance) {
       return -1;
     } else if (n.pathDistance < this.pathDistance) {
