@@ -1,14 +1,11 @@
 package tiralabyra;
 
 public class MinHeap {
-  
-  private int maxSize = 0;
   private int size = 0;
   private PrioNode[] data;
   
-  public MinHeap(int maxSz) {
-    maxSize = maxSz;
-    data = new PrioNode[maxSz];
+  public MinHeap(int reservedSize) {
+    data = new PrioNode[reservedSize];
   }
   
   public int size() {
@@ -46,21 +43,32 @@ public class MinHeap {
   }
   
   /**
+   * Double the size of the internal storage.
+   */
+  private void reallocate() {
+    PrioNode[] newData = new PrioNode[data.length * 2];
+    for (int i = 0; i < data.length; i++) {
+      newData[i] = data[i];
+    }
+    data = newData;
+  }
+  
+  /**
    * Recursively check that heap hierarchy is satisfied starting at a node
    * index, and reorder if necessary.
    * @param index Which node to start from.
    */
   private void heapify(int index) {
-    int l = getLeftChild(index);
-    int r = getRightChild(index);
+    int left = getLeftChild(index);
+    int right = getRightChild(index);
     int next;
-    if (l > 0 && l < size && data[l].compareTo(data[index]) < 0) {
-      next = l;
+    if (left > 0 && left < size && data[left].compareTo(data[index]) < 0) {
+      next = left;
     } else {
       next = index;
     }
-    if (r > 0 && r < size && data[r].compareTo(data[next]) < 0) {
-      next = r;
+    if (right > 0 && right < size && data[right].compareTo(data[next]) < 0) {
+      next = right;
     }
     if (next != index) {
       PrioNode tmp = data[index];
@@ -73,8 +81,11 @@ public class MinHeap {
   /**
    * Insert a new node into the heap.
    */
-  public void insert(PrioNode newnode) {
-    // TODO if (size == maxSz) throw exception
+  public void insert(PrioNode newnode) throws RuntimeException {
+    if (size == data.length) {
+      reallocate();
+    }
+    
     size++;
     int index = size - 1;
     while (index > 0 && data[getParent(index)].compareTo(newnode) > 0) {
@@ -88,12 +99,12 @@ public class MinHeap {
    * A string representation of the heap as a linear array.
    */
   public String toString() {
-    String result = "[" + size + "/" + maxSize + "] ";
+    String result = "[" + size + "/" + data.length + "] ";
     for (int i = 0; i < size; i++) {
       result += data[i] + " ";
     }
     result += "| ";
-    for (int i = size; i < maxSize; i++) {
+    for (int i = size; i < data.length; i++) {
       result += data[i] + " ";
     }
     return result;
@@ -103,7 +114,10 @@ public class MinHeap {
    * Return and remove the first (smallest) element in the heap.
    */
   public PrioNode removeMin() {
-    // TODO throw exception if empty
+    if (size == 0) {
+      return null;
+    }
+    
     final PrioNode min = data[0];
     data[0] = data[size - 1];
     size--;
