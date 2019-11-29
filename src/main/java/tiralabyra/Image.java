@@ -3,6 +3,7 @@ package tiralabyra;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 /**
@@ -10,17 +11,17 @@ import javax.imageio.ImageIO;
  */
 public class Image {
   /**
-   *  Color of the entry pixel in the image.
+   *  Color of the entry pixel in the image (AARRGGBB).
    */
   private final int entryPointColor  = 0xFFFF0000;
 
   /**
-   * Color of the exit pixel in the image.
+   * Color of the exit pixel in the image (AARRGGBB).
    */
   private final int exitPointColor   = 0xFF00FF00;
 
   /**
-   * Color of walls, i.e. non-passable pixels.
+   * Color of walls, i.e. non-passable pixels (AARRGGBB).
    */
   private final int wallColor        = 0xFF000000;
 
@@ -39,7 +40,7 @@ public class Image {
     try {
       bufferedImage = ImageIO.read(new File(path));
     } catch (IOException e) {
-      System.out.println("Kuva ei aukea");
+      System.out.println("Can't open input image");
       return;
     }
   }
