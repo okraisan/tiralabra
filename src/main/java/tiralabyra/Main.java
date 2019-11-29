@@ -8,8 +8,8 @@ public final class Main {
   public static void main(String[] args) {
 
     final int backtrackColor = 0xFFFF0000;
-    final String inFileName  = "C:\\Users\\windy\\Pictures\\labyrintti.png";
-    final String outFileName = "C:\\Users\\windy\\Pictures\\labyra_out.png";
+    final String inFileName  = "src/main/resources/labyrinth_long.png";
+    final String outFileName = "labyra_out.png";
 
     Image image = new tiralabyra.Image(inFileName);
 
