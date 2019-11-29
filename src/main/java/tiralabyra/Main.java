@@ -33,16 +33,23 @@ public final class Main {
     }
   }
 
+  /**
+   * Compare execution times for different algorithms for this input image.
+   */
   public static void compareAlgorithms(String inFileName) {
     Image image = new tiralabyra.Image(inFileName);
 
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
     AStar astar = new AStar();
+
+    long startTime = System.nanoTime();
     SolvedResult result = astar.solve(graph, true);
+    long elapsedTime = System.nanoTime() - startTime;
 
     if (result.wasSolved()) {
       System.out.println("Solved");
       System.out.println(String.format("Length:     %.1f px", result.getLength()));
+      System.out.println(String.format("Exec time:  %.1f ms", elapsedTime / 1000000.0));
     } else {
       System.out.println("This labyrinth can't be solved.");
     }
