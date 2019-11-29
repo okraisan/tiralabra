@@ -52,8 +52,8 @@ public class AStarTest {
     testImage3 = new Image("src/test/resources/testImage3.png");
     testGraph1 = new ConnectedGraph(testImage1);
     testGraph3 = new ConnectedGraph(testImage3);
-    result1 = astar.solve(testGraph1);
-    result3 = astar.solve(testGraph3);
+    result1 = astar.solve(testGraph1, false);
+    result3 = astar.solve(testGraph3, false);
   }
 
   /**

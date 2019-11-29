@@ -17,7 +17,7 @@ public final class Main {
     AStar astar = new AStar();
 
     long startTime = System.nanoTime();
-    SolvedResult result = astar.solve(graph);
+    SolvedResult result = astar.solve(graph, true);
     long endTime = System.nanoTime();
     long duration = (endTime - startTime);
 
@@ -25,8 +25,10 @@ public final class Main {
       System.out.println("Solved!");
       System.out.println();
       System.out.println("RESULTS\n=======");
-      System.out.println(String.format("Input size: %.1f Mpx", image.getNumberOfPixels() / 1000000.0));
-      System.out.println(String.format("Elapsed:    %.0f ms", duration / 1000000.0));
+      System.out.println(String.format("Input size: %.1f Mpx",
+          image.getNumberOfPixels() / 1000000.0));
+      System.out.println(String.format("Elapsed:    %.0f ms",
+          duration / 1000000.0));
 
       // Backtrack.
 

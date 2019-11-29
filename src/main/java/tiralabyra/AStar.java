@@ -1,20 +1,24 @@
 package tiralabyra;
 
+/**
+ * Solve shortest paths using A* (or Dijkstra, when no heuristics specified).
+ */
 public class AStar {
 
-  /**
-   * Solve paths through a connected graph using A*.
-   */
   public AStar() {
   }
 
   /**
    * Solve paths through a connected graph using A*.
    * @param graph The graph to be solved.
+   * @param useHeuristics Whether to use remaining euclidean distance as a heuristic.
    * @return Result with solvability flag and backtrack array.
    */
-  public SolvedResult solve(ConnectedGraph graph) {
+  public SolvedResult solve(ConnectedGraph graph, boolean useHeuristics) {
+    // Parent information for each node, for backtracking.
     int[]     parent = new int[graph.size()];
+
+    // Path distance from the entry point to each node.
     double[]  traveledDistance = new double[graph.size()];
 
     for (int i = 0; i < traveledDistance.length; i++) {
@@ -23,7 +27,8 @@ public class AStar {
     traveledDistance[graph.getEntryNodeIndex()] = 0;
 
     MinHeap prioHeap = new MinHeap();
-    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0, graph.getEuclideanDistanceToExit(0)));
+    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0,
+                                 graph.getEuclideanDistanceToExit(0)));
 
     SolvedResult result = new SolvedResult();
 
@@ -39,16 +44,19 @@ public class AStar {
         int neighborIndex = edge.getNode2();
 
         if (edge != null && neighborIndex != -1) {
-          double neighborsTraveledDistance =
-              traveledDistance[node.getIndex()] + edge.getWeight();
-          double neighborsEstimatedTotalDistance =
-              neighborsTraveledDistance + graph.getEuclideanDistanceToExit(neighborIndex);
-
-          if (neighborsEstimatedTotalDistance < traveledDistance[neighborIndex] + graph.getEuclideanDistanceToExit(neighborIndex)) {
+          double scoreToNeighbor = traveledDistance[node.getIndex()] + edge.getWeight();
+          if (scoreToNeighbor < traveledDistance[neighborIndex]) {
             parent[neighborIndex] = node.getIndex();
+
+            double heuristicRemainingDistance = 0;
+            if (useHeuristics) {
+              heuristicRemainingDistance = graph.getEuclideanDistanceToExit(neighborIndex);
+            }
+
             prioHeap.insert(
-                new PrioNode(neighborIndex, neighborsEstimatedTotalDistance));
-            traveledDistance[neighborIndex] = neighborsTraveledDistance;
+                new PrioNode(neighborIndex, scoreToNeighbor + heuristicRemainingDistance));
+            traveledDistance[neighborIndex] = scoreToNeighbor;
+
           }
         }
       }
