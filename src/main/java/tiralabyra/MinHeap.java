@@ -98,6 +98,7 @@ public class MinHeap {
   /**
    * A string representation of the heap as a linear array.
    */
+  @Override
   public String toString() {
     String result = "[" + size + "/" + data.length + "] ";
     for (int i = 0; i < size; i++) {
