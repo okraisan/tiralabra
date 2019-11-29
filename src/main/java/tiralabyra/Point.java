@@ -40,9 +40,4 @@ public class Point {
     double dy = other.getY() - posY;
     return Math.sqrt(dx * dx + dy * dy);
   }
-
-  @Override
-  public String toString() {
-    return "(" + posX + "," + posY + ")";
-  }
 }

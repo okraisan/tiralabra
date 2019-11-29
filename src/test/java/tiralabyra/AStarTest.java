@@ -16,30 +16,17 @@ public class AStarTest {
    */
   private Image testImage3;
 
-  /**
-   * Graph of a solvable labyrinth.
-   */
-  private ConnectedGraph testGraph1;
-
-  /**
-   * Graph of an unsolvable labyrinth.
-   */
-  private ConnectedGraph testGraph3;
+  private ConnectedGraph solvableGraph;
+  private ConnectedGraph unsolvableGraph;
 
   /**
    * A* solver.
    */
   private AStar astar = new AStar();
 
-  /**
-   * Result with solvable labyrinth.
-   */
-  private SolvedResult result1;
-
-  /**
-   * Result with unsolvable labyrinth.
-   */
-  private SolvedResult result3;
+  private SolvedResult solvableResult;
+  private SolvedResult unsolvableResult;
+  private SolvedResult heuristicsResult;
 
   /**
    * Set up test variables.
