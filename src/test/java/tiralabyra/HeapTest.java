@@ -112,4 +112,29 @@ public class HeapTest {
     assertEquals(-1, heap.getRightChild(8));
   }
 
+  @Test
+  public void testReallocation() {
+    heapWithSmallInitialSize.insert(new PrioNode(1, 1000.0));
+    heapWithSmallInitialSize.insert(new PrioNode(2, 8.0));
+    heapWithSmallInitialSize.insert(new PrioNode(3, 5.0));
+    heapWithSmallInitialSize.insert(new PrioNode(4, 1.0));
+    heapWithSmallInitialSize.insert(new PrioNode(5, 0.0));
+    heapWithSmallInitialSize.insert(new PrioNode(6, -0.5));
+
+    assertEquals(6, heapWithSmallInitialSize.removeMin().getIndex());
+    assertEquals(5, heapWithSmallInitialSize.removeMin().getIndex());
+    assertEquals(4, heapWithSmallInitialSize.removeMin().getIndex());
+    assertEquals(3, heapWithSmallInitialSize.removeMin().getIndex());
+    assertEquals(2, heapWithSmallInitialSize.removeMin().getIndex());
+    assertEquals(1, heapWithSmallInitialSize.removeMin().getIndex());
+  }
+
+  @Test
+  public void testRemoveFromEmpty() {
+    heap.insert(new PrioNode(1, 1000.0));
+    heap.removeMin();
+
+    assertEquals(null, heap.removeMin());
+  }
+
 }
