@@ -37,10 +37,11 @@ public class AStarTest {
     astar = new AStar();
     testImage1 = new Image("src/test/resources/testImage1.png");
     testImage3 = new Image("src/test/resources/testImage3.png");
-    testGraph1 = new ConnectedGraph(testImage1);
-    testGraph3 = new ConnectedGraph(testImage3);
-    result1 = astar.solve(testGraph1, false);
-    result3 = astar.solve(testGraph3, false);
+    solvableGraph = new ConnectedGraph(testImage1);
+    unsolvableGraph = new ConnectedGraph(testImage3);
+    solvableResult = astar.solve(solvableGraph, false);
+    unsolvableResult = astar.solve(unsolvableGraph, false);
+    heuristicsResult = astar.solve(solvableGraph, true);
   }
 
   /**
@@ -48,8 +49,17 @@ public class AStarTest {
    */
   @Test
   public void solvesLabyrinthOnlyIfSolvable() {
-    assertEquals(true, result1.wasSolved());
-    assertEquals(false, result3.wasSolved());
+    assertEquals(true, solvableResult.wasSolved());
+    assertEquals(false, unsolvableResult.wasSolved());
+  }
+
+  /**
+   * Algorithm can solve a solvable labyrinth.
+   */
+  @Test
+  public void solvesLabyrinthUsingHeuristics() {
+    assertEquals(true, solvableResult.wasSolved());
+    assertEquals(false, unsolvableResult.wasSolved());
   }
 
 }
