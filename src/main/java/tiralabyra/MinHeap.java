@@ -26,10 +26,11 @@ public class MinHeap {
    * @return Index to left child, or -1 if nonexistent.
    */
   public int getLeftChild(int index) {
-    if (2 * index + 1 >= size) {
+    int childIndex = 2 * index + 1;
+    if (childIndex >= size) {
       return -1;
     } else {
-      return 2 * index + 1;
+      return childIndex;
     }
   }
 
@@ -39,10 +40,11 @@ public class MinHeap {
    * @return Index to right child, or -1 if nonexistent.
    */
   public int getRightChild(int index) {
-    if (2 * index + 2 >= size) {
+    int childIndex = 2 * index + 2;
+    if (childIndex >= size) {
       return -1;
     } else {
-      return 2 * index + 2;
+      return childIndex;
     }
   }
 
@@ -97,22 +99,6 @@ public class MinHeap {
       index = getParent(index);
     }
     data[index] = newnode;
-  }
-
-  /**
-   * A string representation of the heap as a linear array.
-   */
-  @Override
-  public String toString() {
-    String result = "[" + size + "/" + data.length + "] ";
-    for (int i = 0; i < size; i++) {
-      result += data[i] + " ";
-    }
-    result += "| ";
-    for (int i = size; i < data.length; i++) {
-      result += data[i] + " ";
-    }
-    return result;
   }
 
   /**

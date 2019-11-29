@@ -45,13 +45,6 @@ public class Image {
     }
   }
 
-  /**
-   * Read an image from a BufferedImage.
-   */
-  public Image(BufferedImage buf) {
-    bufferedImage = buf;
-  }
-
   public int getWidth() {
     return bufferedImage.getWidth();
   }

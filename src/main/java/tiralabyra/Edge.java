@@ -13,14 +13,14 @@ public class Edge {
 
   /**
    * An edge between two nodes in a graph, with weight.
-   * @param n1 First node of this edge connection.
-   * @param n2 Second node of this edge connection.
-   * @param wght Edge weight.
+   * @param node1 First node of this edge connection.
+   * @param node2 Second node of this edge connection.
+   * @param weight Edge weight.
    */
-  public Edge(int n1, int n2, double wght) {
-    node1 = n1;
-    node2 = n2;
-    weight = wght;
+  public Edge(int node1, int node2, double weight) {
+    this.node1 = node1;
+    this.node2 = node2;
+    this.weight = weight;
   }
 
   public int getNode1() {
