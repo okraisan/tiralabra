@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class HeapTest {
 
-  Heap heap;
+  MinHeap heap;
   
   @Before
   public void setUp() throws Exception {
-    heap = new Heap(16);
+    heap = new MinHeap(16);
   }
 
   @Test

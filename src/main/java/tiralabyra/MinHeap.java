@@ -1,12 +1,12 @@
 package tiralabyra;
 
-public class Heap {
+public class MinHeap {
   
   private int maxSize = 0;
   private int size = 0;
   private PrioNode[] data;
   
-  public Heap(int maxSz) {
+  public MinHeap(int maxSz) {
     maxSize = maxSz;
     data = new PrioNode[maxSz];
   }
