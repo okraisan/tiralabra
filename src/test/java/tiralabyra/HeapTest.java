@@ -8,10 +8,12 @@ import org.junit.Test;
 public class HeapTest {
 
   MinHeap heap;
+  MinHeap heapWithSmallInitialSize;
 
   @Before
   public void setUp() throws Exception {
     heap = new MinHeap(16);
+    heapWithSmallInitialSize = new MinHeap();
   }
 
   @Test
@@ -85,7 +87,6 @@ public class HeapTest {
     assertEquals(2, heap.getParent(6));
     assertEquals(3, heap.getParent(7));
     assertEquals(3, heap.getParent(8));
-
   }
 
   @Test
@@ -99,7 +100,7 @@ public class HeapTest {
     heap.insert(new PrioNode(7, -0.5));
     heap.insert(new PrioNode(8, -0.5));
     heap.insert(new PrioNode(9, -0.5));
-    
+
     assertEquals(1, heap.getLeftChild(0));
     assertEquals(2, heap.getRightChild(0));
     assertEquals(3, heap.getLeftChild(1));

@@ -4,6 +4,10 @@ public class MinHeap {
   private int size = 0;
   private PrioNode[] data;
 
+  public MinHeap() {
+    data = new PrioNode[1];
+  }
+
   public MinHeap(int reservedSize) {
     data = new PrioNode[reservedSize];
   }

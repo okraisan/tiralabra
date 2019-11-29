@@ -22,7 +22,7 @@ public class AStar {
     }
     totalDist[graph.getEntryNodeIndex()] = 0;
 
-    MinHeap prioHeap = new MinHeap(graph.size());
+    MinHeap prioHeap = new MinHeap();
     prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0));
 
     SolvedResult result = new SolvedResult();
