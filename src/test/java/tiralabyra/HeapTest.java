@@ -8,7 +8,7 @@ import org.junit.Test;
 public class HeapTest {
 
   MinHeap heap;
-  
+
   @Before
   public void setUp() throws Exception {
     heap = new MinHeap(16);
@@ -30,7 +30,7 @@ public class HeapTest {
     assertEquals(2, heap.removeMin().getIndex());
     assertEquals(1, heap.removeMin().getIndex());
   }
-  
+
   @Test
   public void testRemovalOrderWhenInsertedSmallestFirst() {
     heap.insert(new PrioNode(1, -0.5));
@@ -47,7 +47,7 @@ public class HeapTest {
     assertEquals(5, heap.removeMin().getIndex());
     assertEquals(6, heap.removeMin().getIndex());
   }
-  
+
   @Test
   public void testRemovalOrderWhenInsertedOutOfOrder() {
     heap.insert(new PrioNode(1, 5.0));
@@ -64,7 +64,7 @@ public class HeapTest {
     assertEquals(2, heap.removeMin().getIndex());
     assertEquals(5, heap.removeMin().getIndex());
   }
-  
+
   @Test
   public void testParentIndices() {
     heap.insert(new PrioNode(1, 1000.0));
@@ -76,7 +76,7 @@ public class HeapTest {
     heap.insert(new PrioNode(7, -0.5));
     heap.insert(new PrioNode(8, -0.5));
     heap.insert(new PrioNode(9, -0.5));
-    
+
     assertEquals(0, heap.getParent(1));
     assertEquals(0, heap.getParent(2));
     assertEquals(1, heap.getParent(3));
@@ -85,9 +85,9 @@ public class HeapTest {
     assertEquals(2, heap.getParent(6));
     assertEquals(3, heap.getParent(7));
     assertEquals(3, heap.getParent(8));
-    
+
   }
-  
+
   @Test
   public void testChildIndices() {
     heap.insert(new PrioNode(1, 1000.0));

@@ -3,19 +3,19 @@ package tiralabyra;
 public class MinHeap {
   private int size = 0;
   private PrioNode[] data;
-  
+
   public MinHeap(int reservedSize) {
     data = new PrioNode[reservedSize];
   }
-  
+
   public int size() {
     return size;
   }
-  
+
   public int getParent(int index) {
     return (index - 1) / 2;
   }
-  
+
   /**
    * Get the index of this node's left child, or -1 if nonexistent.
    * @param index Which node to ask child for.
@@ -28,7 +28,7 @@ public class MinHeap {
       return 2 * index + 1;
     }
   }
-  
+
   /**
    * Get the index of this node's right child, or -1 if nonexistent.
    * @param index Which node to ask child for.
@@ -41,7 +41,7 @@ public class MinHeap {
       return 2 * index + 2;
     }
   }
-  
+
   /**
    * Double the size of the internal storage.
    */
@@ -52,7 +52,7 @@ public class MinHeap {
     }
     data = newData;
   }
-  
+
   /**
    * Recursively check that heap hierarchy is satisfied starting at a node
    * index, and reorder if necessary.
@@ -77,7 +77,7 @@ public class MinHeap {
       heapify(next);
     }
   }
-  
+
   /**
    * Insert a new node into the heap.
    */
@@ -85,7 +85,7 @@ public class MinHeap {
     if (size == data.length) {
       reallocate();
     }
-    
+
     size++;
     int index = size - 1;
     while (index > 0 && data[getParent(index)].compareTo(newnode) > 0) {
@@ -94,7 +94,7 @@ public class MinHeap {
     }
     data[index] = newnode;
   }
-  
+
   /**
    * A string representation of the heap as a linear array.
    */
@@ -109,7 +109,7 @@ public class MinHeap {
     }
     return result;
   }
-  
+
   /**
    * Return and remove the first (smallest) element in the heap.
    */
@@ -117,7 +117,7 @@ public class MinHeap {
     if (size == 0) {
       return null;
     }
-    
+
     final PrioNode min = data[0];
     data[0] = data[size - 1];
     size--;
