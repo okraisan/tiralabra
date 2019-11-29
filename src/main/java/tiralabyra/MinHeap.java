@@ -8,8 +8,16 @@ public class MinHeap {
     data = new PrioNode[1];
   }
 
+  /**
+   * Initialize a minimum heap with initial allocated size.
+   * @param reservedSize Initial size of the internal container.
+   */
   public MinHeap(int reservedSize) {
-    data = new PrioNode[reservedSize];
+    if (reservedSize > 0) {
+      data = new PrioNode[reservedSize];
+    } else {
+      data = new PrioNode[1];
+    }
   }
 
   public int size() {
