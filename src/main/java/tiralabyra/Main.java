@@ -1,5 +1,7 @@
 package tiralabyra;
 
+import java.util.Scanner;
+
 public final class Main {
 
   /**
@@ -55,10 +57,47 @@ public final class Main {
     }
   }
 
+  static void showMenu() {
+    Scanner userInput = new Scanner(System.in);
+
+    System.out.print("TIRALABYRA\n==========\n\nMENU\n==========\n\n");
+
+    boolean done = false;
+
+    while (!done) {
+      System.out.println("1  Solve a labyrinth");
+      System.out.println("2  Compare algorithms");
+      System.out.println("0  Exit");
+
+      String choice = userInput.nextLine();
+      switch (choice) {
+        case "1":
+          System.out.println("Enter input image file name: ");
+          String infilename = userInput.nextLine();
+          System.out.println("Enter output image file name: ");
+          String outfilename = userInput.nextLine();
+
+          solveAndSave(infilename, outfilename);
+          break;
+
+        case "0":
+          System.out.println("Goodbye");
+          done = true;
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    userInput.close();
+  }
+
   /**
    * We start here.
    */
   public static void main(String[] args) {
-    solveAndSave("src/main/resources/labyrinth_short.png", "output.png");
+    showMenu();
+    //compareAlgorithms("src/main/resources/labyrinth_long.png");
   }
 }
