@@ -21,7 +21,7 @@ Terminaaliin tulostuu ohjelman päävalikko.
 Ohjelma ratkaisee kuvatiedostossa olevan labyrintin. Kuvan tulee olla sellaisessa
 bittikarttamuodossa, jota `javax.imageio.ImageIO`-luokka osaa lukea. Kuvaan
 merkitään labyrintin alkupiste punaisella värillä (255, 0, 0) ja loppupiste
-vihreällä (0, 0, 255). Seinät, joiden läpi ei saa siirtyä, merkitään mustalla
+vihreällä (0, 255, 0). Seinät, joiden läpi ei saa siirtyä, merkitään mustalla
 värillä (0, 0, 0). Muiden pikselien väriarvot voivat olla mitä vain. Kuvan
 tulee olla häviöttömästi koodattu, jotta näiden merkkipikselien arvot eivät
 muutu.
