@@ -9,3 +9,27 @@ Labyrinttiratkaisija tiralabraan.
 * [Viikkoraportti 2](doc/viikkoraportti2.md)
 * [Viikkoraportti 3](doc/viikkoraportti3.md)
 * [Viikkoraportti 4](doc/viikkoraportti4.md)
+
+## Käyttöohje
+
+Ohjelma käännetään ja ajetaan gradlen avulla: `gradle run`
+
+Terminaaliin tulostuu ohjelman päävalikko.
+
+### 1 Labyrintin ratkaiseminen
+
+Ohjelma ratkaisee kuvatiedostossa olevan labyrintin. Kuvan tulee olla sellaisessa
+bittikarttamuodossa, jota `javax.imageio.ImageIO`-luokka osaa lukea. Kuvaan
+merkitään labyrintin alkupiste punaisella värillä (255, 0, 0) ja loppupiste
+vihreällä (0, 0, 255). Seinät, joiden läpi ei saa siirtyä, merkitään mustalla
+värillä (0, 0, 0). Muiden pikselien väriarvot voivat olla mitä vain. Kuvan
+tulee olla häviöttömästi koodattu, jotta näiden merkkipikselien arvot eivät
+muutu.
+
+Tulostetiedostoon kirjoitetaan kopio alkuperäisestä labyrintistä, johon on
+piirretty ratkaistu reitti.
+
+### 2 Algoritmien vertailu
+
+Tällä valinnalla ohjelma ratkaisee useita erilaisia labyrinttejä muutamaa eri
+algoritmia käyttäen. Algoritmien ajankäyttö tulostetaan terminaaliin.
