@@ -35,5 +35,5 @@ piirretty ratkaistu reitti.
 ### 2 Algoritmien vertailu
 
 Tällä valinnalla ohjelma ratkaisee useita erilaisia labyrinttejä muutamaa eri
-algoritmia käyttäen (BFS, Dijkstra, A*). Algoritmien ajankäyttö erilaisilla
-syötekuvilla tulostetaan terminaaliin.
+algoritmia käyttäen (tällä hetkellä BFS, Dijkstra, A*). Algoritmien ajankäyttö
+erilaisilla syötekuvilla tulostetaan terminaaliin.
