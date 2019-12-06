@@ -40,31 +40,55 @@ public final class Main {
    */
   public static void compareAlgorithms(String inFileName) {
     Image image = new tiralabyra.Image(inFileName);
+    System.out.println("n = " + image.getNumberOfPixels());
 
     ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
     AStar astar = new AStar();
+
+    System.out.println();
+    System.out.println("A* WITH HEURISTICS");
 
     long startTime = System.nanoTime();
     SolvedResult result = astar.solve(graph, true);
     long elapsedTime = System.nanoTime() - startTime;
 
     if (result.wasSolved()) {
-      System.out.println("Solved");
       System.out.println(String.format("Length:     %.1f px", result.getLength()));
       System.out.println(String.format("Exec time:  %.1f ms", elapsedTime / 1000000.0));
-    } else {
-      System.out.println("This labyrinth can't be solved.");
     }
+
+    System.out.println();
+    System.out.println("A* WITHOUT HEURISTICS");
+
+    startTime = System.nanoTime();
+    result = astar.solve(graph, false);
+    elapsedTime = System.nanoTime() - startTime;
+
+    if (result.wasSolved()) {
+      System.out.println(String.format("Length:     %.1f px", result.getLength()));
+      System.out.println(String.format("Exec time:  %.1f ms", elapsedTime / 1000000.0));
+    }
+  }
+
+  static void printHeading(String headingText) {
+    System.out.println(headingText);
+    for (int i = 0; i < headingText.length(); i++) {
+      System.out.print("=");
+    }
+    System.out.print("\n\n");
   }
 
   static void showMenu() {
     Scanner userInput = new Scanner(System.in);
 
-    System.out.print("TIRALABYRA\n==========\n\nMENU\n==========\n\n");
+    printHeading("TIRALABYRA");
 
     boolean done = false;
 
     while (!done) {
+
+      printHeading("MENU");
+
       System.out.println("1  Solve a labyrinth");
       System.out.println("2  Compare algorithms");
       System.out.println("0  Exit");
@@ -78,6 +102,15 @@ public final class Main {
           String outfilename = userInput.nextLine();
 
           solveAndSave(infilename, outfilename);
+          break;
+
+        case "2":
+          printHeading("DIFFICULT LABYRINTH");
+          compareAlgorithms("src/main/resources/labyrinth_long.png");
+
+          System.out.println();
+          printHeading("EASY LABYRINTH");
+          compareAlgorithms("src/main/resources/labyrinth_short.png");
           break;
 
         case "0":
@@ -98,6 +131,5 @@ public final class Main {
    */
   public static void main(String[] args) {
     showMenu();
-    //compareAlgorithms("src/main/resources/labyrinth_long.png");
   }
 }
