@@ -59,7 +59,7 @@ public class MinHeap {
   /**
    * Double the size of the internal storage.
    */
-  private void reallocate() {
+  private void reallocateBigger() {
     PrioNode[] newData = new PrioNode[data.length * 2];
     for (int i = 0; i < data.length; i++) {
       newData[i] = data[i];
@@ -97,7 +97,7 @@ public class MinHeap {
    */
   public void insert(PrioNode newnode) throws RuntimeException {
     if (size == data.length) {
-      reallocate();
+      reallocateBigger();
     }
 
     size++;
