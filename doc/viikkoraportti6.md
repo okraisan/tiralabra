@@ -10,5 +10,6 @@ A*-toteutukseni vaatii suotta verkon rakentamista syötekuvasta, vaikka
 algoritmin voisi ajaa suoraan bittikartallekin.
 
 Tarkoituksena on ollut toteuttaa vielä neljänneksi algoritmiksi
-JPS-optimoitu A*, mutta se vaatisi vielä parempaa hahmottamista ja ehkä
-olemassaolevan toteutukseni refaktorointa edellämainitulla tavalla.
+JPS-optimoitu A*, mutta se vaatisi minulta vielä asian parempaa
+hahmottamista ja ehkä olemassaolevan toteutukseni refaktorointa
+edellämainitulla tavalla.

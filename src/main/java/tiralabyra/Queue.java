@@ -10,7 +10,7 @@ public class Queue {
   }
 
   /**
-   * Initialize a minimum heap with initial allocated size.
+   * Initialize a FIFO queue with an internal circular buffer.
    * @param reservedSize Initial size of the internal container.
    */
   public Queue(int reservedSize) {
