@@ -47,4 +47,15 @@ jacocoTestReport {
     }
 }
 
+checkstyle {
+    toolVersion '8.26'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
+
 check.dependsOn jacocoTestReport
