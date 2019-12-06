@@ -1,6 +1,11 @@
-package tiralabyra;
+package main;
 
 import java.util.Scanner;
+import tiralabyra.AStar;
+import tiralabyra.BreadthFirstSearch;
+import tiralabyra.ConnectedGraph;
+import tiralabyra.Image;
+import tiralabyra.SolvedResult;
 
 public final class Main {
 
