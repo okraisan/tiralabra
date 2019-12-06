@@ -10,8 +10,12 @@ A*-toteutukseni vaatii suotta verkon rakentamista syötekuvasta, vaikka
 algoritmin voisi ajaa suoraan bittikartallekin.
 
 Tarkoituksena on ollut toteuttaa vielä neljänneksi algoritmiksi
-JPS-optimoitu A*, mutta se vaatisi minulta vielä algoritmin parempaa
-hahmottamista ja ehkä olemassaolevan A*-toteutukseni refaktorointa
-edellämainitulla tavalla.
+jokin sofistikoituneempi labyrinttialgoritmi, vaikkapa siis JPS-optimoitu
+A*, mutta se vaatisi minulta vielä algoritmin parempaa hahmottamista ja
+ehkä olemassaolevan A*-toteutukseni refaktorointa edellämainitulla tavalla.
+
+BreadthFirstSearch ei tunnu tällä hetkellä toimivan suurella labyrinttikuvalla;
+se ei löydä siihen lainkaan ratkaisua, vaikka pienemmillä testikuvilla
+testit menevät läpi.
 
 Työmääräarvio noin 10h.
