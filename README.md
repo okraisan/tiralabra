@@ -10,6 +10,7 @@ Labyrinttiratkaisija tiralabraan.
 * [Viikkoraportti 3](doc/viikkoraportti3.md)
 * [Viikkoraportti 4](doc/viikkoraportti4.md)
 * [Viikkoraportti 5](doc/viikkoraportti5.md)
+* [Viikkoraportti 6](doc/viikkoraportti6.md)
 
 ## Käyttöohje
 
