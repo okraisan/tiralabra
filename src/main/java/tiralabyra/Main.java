@@ -15,9 +15,7 @@ public final class Main {
     ConnectedGraph graph = new tiralabyra.ConnectedGraph();
     graph.build(image);
     AStar astar = new AStar();
-    //SolvedResult result = astar.solve(graph, true);
-    BreadthFirstSearch bfs = new BreadthFirstSearch();
-    SolvedResult result = bfs.solve(graph);
+    SolvedResult result = astar.solve(graph, true);
 
     if (result.wasSolved()) {
       System.out.println("Solved");

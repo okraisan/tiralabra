@@ -1,5 +1,8 @@
 package tiralabyra;
 
+/**
+ * FIFO queue of integers, using a circular buffer internally.
+ */
 public class Queue {
   private int size = 0;
   private int[] data;
@@ -28,7 +31,7 @@ public class Queue {
   /**
    * Double the size of the internal storage.
    */
-  private void reallocate() {
+  private void reallocateBigger() {
     int[] newData = new int[data.length * 2];
     for (int i = 0; i < size; i++) {
       newData[i] = data[(head + i) % data.length];
@@ -42,11 +45,11 @@ public class Queue {
    */
   public void insert(int newnode) throws RuntimeException {
     if (size == data.length) {
-      reallocate();
+      reallocateBigger();
     }
 
     size++;
-    int tail = (head + size) % data.length;
+    int tail = (head + size - 1) % data.length;
     data[tail] = newnode;
   }
 
