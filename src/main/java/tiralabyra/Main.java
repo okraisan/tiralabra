@@ -42,13 +42,14 @@ public final class Main {
     Image image = new tiralabyra.Image(inFileName);
     System.out.println("n = " + image.getNumberOfPixels());
 
-    ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
-    AStar astar = new AStar();
-
     System.out.println();
     System.out.println("A* WITH HEURISTICS");
 
+    ConnectedGraph graph = new tiralabyra.ConnectedGraph();
+    AStar astar = new AStar();
+
     long startTime = System.nanoTime();
+    graph.build(image);
     SolvedResult result = astar.solve(graph, true);
     long elapsedTime = System.nanoTime() - startTime;
 
@@ -62,6 +63,20 @@ public final class Main {
 
     startTime = System.nanoTime();
     result = astar.solve(graph, false);
+    elapsedTime = System.nanoTime() - startTime;
+
+    if (result.wasSolved()) {
+      System.out.println(String.format("Length:     %.1f px", result.getLength()));
+      System.out.println(String.format("Exec time:  %.1f ms", elapsedTime / 1000000.0));
+    }
+
+    System.out.println();
+    System.out.println("BREADTH-FIRST SEARCH");
+
+    BreadthFirstSearch bfs = new BreadthFirstSearch();
+
+    startTime = System.nanoTime();
+    result = bfs.solve(graph);
     elapsedTime = System.nanoTime() - startTime;
 
     if (result.wasSolved()) {
