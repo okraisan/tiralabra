@@ -13,13 +13,17 @@ public class ConnectedGraph {
    */
   private final int numberOfNeighborhoods = 8;
 
+  public ConnectedGraph() {
+  }
+
   /**
    * Build a connected graph based on an input image, with all neighborhoods
    * and input/exit nodes in place.
    * @param image Input image with correctly color-labeled walls and entry/exit
    *     points.
    */
-  public ConnectedGraph(Image image) {
+  public void build(Image image) {
+    // Create blank Edge objects
     edges = new Edge[image.getNumberOfPixels()][numberOfNeighborhoods];
     for (int i = 0; i < image.getNumberOfPixels(); i++) {
       for (int j = 0; j < numberOfNeighborhoods; j++) {

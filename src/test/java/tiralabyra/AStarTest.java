@@ -37,8 +37,10 @@ public class AStarTest {
     astar = new AStar();
     testImage1 = new Image("src/test/resources/testImage1.png");
     testImage3 = new Image("src/test/resources/testImage3.png");
-    solvableGraph = new ConnectedGraph(testImage1);
-    unsolvableGraph = new ConnectedGraph(testImage3);
+    solvableGraph = new ConnectedGraph();
+    solvableGraph.build(testImage1);
+    unsolvableGraph = new ConnectedGraph();
+    unsolvableGraph.build(testImage3);
     solvableResult = astar.solve(solvableGraph, false);
     unsolvableResult = astar.solve(unsolvableGraph, false);
     heuristicsResult = astar.solve(solvableGraph, true);

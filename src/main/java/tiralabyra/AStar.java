@@ -27,8 +27,7 @@ public class AStar {
     traveledDistance[graph.getEntryNodeIndex()] = 0;
 
     MinHeap prioHeap = new MinHeap();
-    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0,
-                                 graph.getEuclideanDistanceToExit(0)));
+    prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0));
 
     SolvedResult result = new SolvedResult();
 

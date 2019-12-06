@@ -12,9 +12,12 @@ public final class Main {
 
     Image image = new tiralabyra.Image(inFileName);
 
-    ConnectedGraph graph = new tiralabyra.ConnectedGraph(image);
+    ConnectedGraph graph = new tiralabyra.ConnectedGraph();
+    graph.build(image);
     AStar astar = new AStar();
-    SolvedResult result = astar.solve(graph, true);
+    //SolvedResult result = astar.solve(graph, true);
+    BreadthFirstSearch bfs = new BreadthFirstSearch();
+    SolvedResult result = bfs.solve(graph);
 
     if (result.wasSolved()) {
       System.out.println("Solved");

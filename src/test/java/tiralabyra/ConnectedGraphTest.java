@@ -34,7 +34,8 @@ public class ConnectedGraphTest {
   @Before
   public void setUp() throws Exception {
     testImage1 = new Image("src/test/resources/testImage1.png");
-    testGraph1 = new ConnectedGraph(testImage1);
+    testGraph1 = new ConnectedGraph();
+    testGraph1.build(testImage1);
   }
 
   /**
