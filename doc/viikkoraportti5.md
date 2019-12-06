@@ -19,3 +19,5 @@ tai syvyyshaku.
 Muutin Checkstyle-säännöstön Sun-standardista Google-standardiin,
 joka tuntuu monin tavoin järkevämmältä. Lisäsin nyt Checkstylen myös
 build.gradleen, olen aiemmin ajanut sitä vain Eclipsestä.
+
+Työmääräarvio noin 8h.

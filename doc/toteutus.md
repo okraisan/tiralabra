@@ -15,13 +15,17 @@ labyrintti ylipäätään ratkaistavissa.
 Lopuksi reitti piirretään alkuperäisen kuvan kopioon ja kirjoitetaan
 uuteen kuvatiedostoon.
 
-### A*
+### A* / Dijsktra
 
 A*:n prioriteettijono on toteutettu minimikekona, jossa vertailtavana
 suureena on kullekin reitille arvioitu lopullinen pituus. Tässä käytetään
 heuristiikkaa, joka on yksinkertaisesti diagonaalinen eli euklidinen
 etäisyys reitin viimeisimmästä pisteestä maalipisteeseen. Heuristiikan
 voi kytkeä myös pois, jolloin algoritmi toimii kuten Dijkstran algoritmi.
+
+### BFS
+
+Leveyshaku 
 
 ### Kuvan luku ja kirjoitus
 
