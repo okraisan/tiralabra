@@ -94,6 +94,7 @@ public class MinHeap {
 
   /**
    * Insert a new node into the heap.
+   * @param newnode The node to be inserted.
    */
   public void insert(PrioNode newnode) throws RuntimeException {
     if (size == data.length) {
@@ -111,6 +112,7 @@ public class MinHeap {
 
   /**
    * Return and remove the first (smallest) element in the heap.
+   * @return The smallest element, or null if empty.
    */
   public PrioNode removeMin() {
     if (size == 0) {
