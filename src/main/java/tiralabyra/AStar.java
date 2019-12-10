@@ -42,7 +42,7 @@ public class AStar {
       for (Edge edge : graph.getEdgesFrom(node.getIndex())) {
         int neighborIndex = edge.getNode2();
 
-        if (edge != null && neighborIndex != -1) {
+        if (neighborIndex != -1) {
           double scoreToNeighbor = traveledDistance[node.getIndex()] + edge.getWeight();
           if (scoreToNeighbor < traveledDistance[neighborIndex]) {
             parent[neighborIndex] = node.getIndex();

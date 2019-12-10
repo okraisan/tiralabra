@@ -37,7 +37,7 @@ public class BreadthFirstSearch {
       for (Edge edge : graph.getEdgesFrom(nodeIndex)) {
         int neighborIndex = edge.getNode2();
 
-        if (edge != null && neighborIndex != -1 && !isVisited[neighborIndex]) {
+        if (neighborIndex != -1 && !isVisited[neighborIndex]) {
           isVisited[neighborIndex] = true;
           parent[neighborIndex] = nodeIndex;
           traveledDistance[neighborIndex] = traveledDistance[nodeIndex] + edge.getWeight();
