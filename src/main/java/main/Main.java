@@ -82,12 +82,15 @@ public final class Main {
     BreadthFirstSearch bfs = new BreadthFirstSearch();
 
     startTime = System.nanoTime();
+    graph.build(image);
     result = bfs.solve(graph);
     elapsedTime = System.nanoTime() - startTime;
 
     if (result.wasSolved()) {
       System.out.println(String.format("Length:     %.1f px", result.getLength()));
       System.out.println(String.format("Exec time:  %.1f ms", elapsedTime / 1000000.0));
+    } else {
+      System.out.println("Labyrinth could not be solved");
     }
   }
 
