@@ -49,7 +49,7 @@ public final class Main {
     System.out.println("n = " + image.getNumberOfPixels());
 
     System.out.println();
-    System.out.println("A* WITH HEURISTICS");
+    System.out.println("A*");
 
     ConnectedGraph graph = new tiralabyra.ConnectedGraph();
     AStar astar = new AStar();
@@ -65,7 +65,7 @@ public final class Main {
     }
 
     System.out.println();
-    System.out.println("A* WITHOUT HEURISTICS");
+    System.out.println("DIJKSTRA");
 
     startTime = System.nanoTime();
     result = astar.solve(graph, false);
