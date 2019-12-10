@@ -22,7 +22,7 @@ public class QueueTest {
    */
   @Before
   public void setUp() {
-    queue = new Queue();
+    queue = new Queue(1);
     emptyQueue = new Queue();
     for (int i = 1; i <= 32; i++) {
       queue.insert(i);
@@ -77,5 +77,17 @@ public class QueueTest {
   @Test
   public void testHeadReset() {
     assertEquals(5, oncePoppedAndInsertedQueue.pop());
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testCantCreateWithZeroReservedSize() {
+    Queue zeroQ = new Queue(0);
+    System.out.println("This won't be reached but silences 'unused' warning "
+                     + "about " + zeroQ);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testCantPopFromEmptyQueue() {
+    emptyQueue.pop();
   }
 }

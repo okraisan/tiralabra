@@ -35,6 +35,8 @@ public class ImageTest {
   @Test
   public void imageHasAnEntryPoint() {
     assertEquals(true, testImage1.hasEntryPointAt(correctEntryPoint));
+    assertEquals(false, testImage1.hasEntryPointAt(new Point(-1, -1)));
+    assertEquals(false, testImage1.hasEntryPointAt(new Point(0, 0)));
     assertEquals(true, !testImage2.hasEntryPointAt(correctEntryPoint));
   }
 
@@ -44,7 +46,27 @@ public class ImageTest {
   @Test
   public void imageHasAnExitPoint() {
     assertEquals(true, testImage1.hasExitPointAt(correctExitPoint));
+    assertEquals(false, testImage1.hasExitPointAt(new Point(-1, -1)));
+    assertEquals(false, testImage1.hasExitPointAt(new Point(0, 0)));
     assertEquals(true, !testImage2.hasExitPointAt(correctExitPoint));
+  }
+
+  @Test
+  public void imageIsTraversableOnlyWhereItShouldBe() {
+    assertEquals(true, testImage1.isTraversableAt(new Point(1, 1)));
+    assertEquals(true, testImage1.isTraversableAt(correctExitPoint));
+    assertEquals(true, testImage1.isTraversableAt(correctEntryPoint));
+    assertEquals(false, testImage1.isTraversableAt(new Point(0, 0)));
+    assertEquals(false, testImage1.isTraversableAt(new Point(10, 0)));
+  }
+
+  @Test
+  public void imageOnlyContainsPositionsInsideBorder() {
+    assertEquals(true, testImage1.containsPosition(new Point(0, 0)));
+    assertEquals(false, testImage1.containsPosition(new Point(-1, 0)));
+    assertEquals(false, testImage1.containsPosition(new Point(0, -1)));
+    assertEquals(false, testImage1.containsPosition(new Point(10, 0)));
+    assertEquals(false, testImage1.containsPosition(new Point(0, 10)));
   }
 
 }

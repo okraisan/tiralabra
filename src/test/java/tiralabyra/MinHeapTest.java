@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-public class HeapTest {
+public class MinHeapTest {
 
   MinHeap heap;
   MinHeap heapWithSmallInitialSize;
@@ -127,6 +127,18 @@ public class HeapTest {
     assertEquals(3, heapWithSmallInitialSize.removeMin().getIndex());
     assertEquals(2, heapWithSmallInitialSize.removeMin().getIndex());
     assertEquals(1, heapWithSmallInitialSize.removeMin().getIndex());
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testCantGetParentOfRoot() {
+    heap.getParent(0);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testCantCreateWithZeroReservedSize() {
+    MinHeap zeroHeap = new MinHeap(0);
+    System.out.println("This won't be reached but silences 'unused' warning "
+                     + "about " + zeroHeap);
   }
 
   @Test
