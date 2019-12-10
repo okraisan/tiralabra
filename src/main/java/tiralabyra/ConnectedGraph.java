@@ -45,6 +45,8 @@ public class ConnectedGraph {
     final int dirNumSW = 3;
 
     Point exitPoint = new Point(0, 0);
+    entryNodeIndex = -1;
+    exitNodeIndex = -1;
 
     // Assign a neighborhood to all non-wall pixels.
     for (Point point : image.getPixelPositions()) {
