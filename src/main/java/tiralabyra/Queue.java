@@ -17,11 +17,10 @@ public class Queue {
    * @param reservedSize Initial size of the internal container.
    */
   public Queue(int reservedSize) {
-    if (reservedSize > 0) {
-      data = new int[reservedSize];
-    } else {
-      data = new int[1];
+    if (reservedSize <= 0) {
+      throw new RuntimeException("Reserved size must be greater than 0");
     }
+    data = new int[reservedSize];
   }
 
   public int size() {
@@ -56,8 +55,10 @@ public class Queue {
   /**
    * Return and remove the first element in the queue.
    */
-  public int pop() {
-    // TODO Exception if size == null
+  public int pop() throws RuntimeException {
+    if (size == 0) {
+      throw new NullPointerException("Can't pop from empty queue");
+    }
 
     int result = data[head];
     head = (head + 1) % data.length;

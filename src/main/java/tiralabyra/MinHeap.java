@@ -13,18 +13,21 @@ public class MinHeap {
    * @param reservedSize Initial size of the internal container.
    */
   public MinHeap(int reservedSize) {
-    if (reservedSize > 0) {
-      data = new PrioNode[reservedSize];
-    } else {
-      data = new PrioNode[1];
+    if (reservedSize <= 0) {
+      throw new RuntimeException("Reserved size must be greater than 0");
     }
+    data = new PrioNode[reservedSize];
   }
 
   public int size() {
     return size;
   }
 
-  public int getParent(int index) {
+  public int getParent(int index) throws RuntimeException {
+    if (index == 0) {
+      throw new RuntimeException("Can't get parent of root");
+    }
+
     return (index - 1) / 2;
   }
 
