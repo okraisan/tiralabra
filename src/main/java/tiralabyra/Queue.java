@@ -36,7 +36,7 @@ public class Queue {
     for (int i = 0; i < size; i++) {
       newData[i] = data[(head + i) % data.length];
     }
-
+    head = 0;
     data = newData;
   }
 
