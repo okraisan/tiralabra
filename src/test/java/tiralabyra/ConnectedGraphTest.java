@@ -53,4 +53,14 @@ public class ConnectedGraphTest {
   public void hasCorrectExitNode() {
     assertEquals(correctExitNodeIndex, testGraph1.getExitNodeIndex());
   }
+
+  /**
+   * Distance to exit (for A* heuristics) is correctly measured.
+   */
+  @Test
+  public void knowsDistanceToExit() {
+    assertEquals(6.71, testGraph1.getEuclideanDistanceToExit(0), 0.005);
+    assertEquals(2.24, testGraph1.getEuclideanDistanceToExit(correctEntryNodeIndex), 0.005);
+    assertEquals(0.0, testGraph1.getEuclideanDistanceToExit(correctExitNodeIndex), 0.005);
+  }
 }
