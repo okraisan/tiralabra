@@ -61,4 +61,24 @@ public class SolvedResult {
   public double getLength() {
     return length;
   }
+
+  public int getNumberOfNodesVisited() {
+    return numberOfNodesVisited;
+  }
+
+  public long getTimeSpent() {
+    return timeSpent;
+  }
+
+  public String toString() {
+    String s = "";
+    if (wasSolved()) {
+      s += String.format("Length:     %.1f px\n", getLength());
+      s += String.format("Exec time:  %.1f ms\n", timeSpent / 1000000.0);
+      s += String.format("Inserted:   %d nodes\n", getNumberOfNodesVisited());
+    } else {
+      s += "Labyrinth could not be solved\n";
+    }
+    return s;
+  }
 }
