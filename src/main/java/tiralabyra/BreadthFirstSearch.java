@@ -25,6 +25,7 @@ public class BreadthFirstSearch {
     isVisited[graph.getEntryNodeIndex()] = true;
 
     SolvedResult result = new SolvedResult();
+    int numVisited = 1;
 
     while (nodeQueue.size() > 0) {
       int nodeIndex = nodeQueue.pop();
@@ -42,10 +43,12 @@ public class BreadthFirstSearch {
           parent[neighborIndex] = nodeIndex;
           traveledDistance[neighborIndex] = traveledDistance[nodeIndex] + edge.getWeight();
           nodeQueue.insert(neighborIndex);
+          numVisited++;
         }
       }
     }
     result.setParents(parent);
+    result.setNumberOfNodesVisited(numVisited);
 
     return result;
   }

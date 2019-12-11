@@ -18,6 +18,9 @@ public class AStar {
     // Parent information for each node, for backtracking.
     int[]     parent = new int[graph.size()];
 
+    // The "closed list" of A*
+    boolean[] isVisited = new boolean[graph.size()];
+
     // Path distance from the entry point to each node.
     double[]  traveledDistance = new double[graph.size()];
 
@@ -30,6 +33,7 @@ public class AStar {
     prioHeap.insert(new PrioNode(graph.getEntryNodeIndex(), 0));
 
     SolvedResult result = new SolvedResult();
+    int numVisited = 1;
 
     while (prioHeap.size() > 0) {
       PrioNode node = prioHeap.removeMin();
@@ -42,9 +46,9 @@ public class AStar {
       for (Edge edge : graph.getEdgesFrom(node.getIndex())) {
         int neighborIndex = edge.getNode2();
 
-        if (neighborIndex != -1) {
+        if (neighborIndex != -1 && !isVisited[neighborIndex]) {
           double scoreToNeighbor = traveledDistance[node.getIndex()] + edge.getWeight();
-          if (scoreToNeighbor < traveledDistance[neighborIndex]) {
+          //if (scoreToNeighbor < traveledDistance[neighborIndex]) {
             parent[neighborIndex] = node.getIndex();
 
             double heuristicRemainingDistance = 0;
@@ -55,12 +59,15 @@ public class AStar {
             prioHeap.insert(
                 new PrioNode(neighborIndex, scoreToNeighbor + heuristicRemainingDistance));
             traveledDistance[neighborIndex] = scoreToNeighbor;
+            isVisited[neighborIndex] = true;
+            numVisited++;
 
-          }
+          //}
         }
       }
     }
     result.setParents(parent);
+    result.setNumberOfNodesVisited(numVisited);
 
     return result;
   }

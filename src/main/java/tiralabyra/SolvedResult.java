@@ -14,6 +14,13 @@ public class SolvedResult {
    */
   private double length;
 
+  /**
+   * How many nodes in total were added to a queue or heap structure.
+   */
+  private int numberOfNodesVisited;
+
+  private long timeSpent;
+
   public SolvedResult() {
   }
 
@@ -22,11 +29,15 @@ public class SolvedResult {
    * @param solved Was the labyrinth successfully solved?
    * @param parents Backtrack path containing the parent index for each index.
    * @param length Total geometric length of the solution.
+   * @param numvisited Total number of nodes added to a data structure.
+   * @param time Number of nanoseconds spent.
    */
-  public SolvedResult(boolean solved, int[] parents, double length) {
+  public SolvedResult(boolean solved, int[] parents, double length, int numvisited, long time) {
     this.solved = solved;
     this.parents = parents;
     this.length = length;
+    this.numberOfNodesVisited = numvisited;
+    this.timeSpent = time;
   }
 
   public void setSolved(boolean solved) {
@@ -42,6 +53,14 @@ public class SolvedResult {
 
   public void setLength(double length) {
     this.length = length;
+  }
+
+  public void setTimeSpent(long time) {
+    this.timeSpent = time;
+  }
+
+  public void setNumberOfNodesVisited(int numvisited) {
+    this.numberOfNodesVisited = numvisited;
   }
 
   public boolean wasSolved() {
