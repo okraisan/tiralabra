@@ -15,6 +15,13 @@ public final class Main {
   public static void solveAndSave(String inFileName, String outFileName) {
     final int backtrackColor = 0xFFFF0000;
 
+    if (inFileName.equals("")) {
+      inFileName = "src/main/resources/labyrinth_short.png";
+    }
+    if (outFileName.equals("")) {
+      outFileName = "output.png";
+    }
+
     Image image = new tiralabyra.Image(inFileName);
 
     ConnectedGraph graph = new tiralabyra.ConnectedGraph();
@@ -120,9 +127,9 @@ public final class Main {
       String choice = userInput.nextLine();
       switch (choice) {
         case "1":
-          System.out.println("Enter input image file name: ");
+          System.out.println("Enter input image file name (empty for default): ");
           String infilename = userInput.nextLine();
-          System.out.println("Enter output image file name: ");
+          System.out.println("Enter output image file name (empty for default): ");
           String outfilename = userInput.nextLine();
 
           solveAndSave(infilename, outfilename);
