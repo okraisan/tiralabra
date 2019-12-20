@@ -1,15 +1,12 @@
 ## Tiralabyra: Testaus
 
-### Toteutus
+### Automaattitestit
 
-Yksikkötestaus tapahtuu JUnit-testeillä. Myös kokonaisen
-labyrintin ratkaisemista testataan testikuvien avulla. Testikattavuutta
-seurataan Jacocon avulla sekä Eclipse IDE:n omalla kattavuusraportoinnilla.
+Yksikkötestaus tapahtuu luokkakohtaisilla JUnit-testeillä. Myös kokonaisen
+labyrintin ratkaisemista testataan yksinkertaisten testikuvien avulla, ikään
+kuin end-to-end-testinä. Testikattavuutta seurataan Jacocon avulla.
 
-Testausta on myös yksikkötestien ulkopuolella, sillä pääohjelma voi kutsua
-eri algoritmien suoritusaikoja vertailevaa funktiota.
-
-### Tuloksia
+### Suorituskyky
 
 Vertasin kolmea eri algoritmia labyrinttien ratkaisuun: Dijkstraa, A*:ia ja
 leveyshakua. Vertailussa käytin kahta hieman erilaista labyrinttiä, joista

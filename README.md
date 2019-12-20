@@ -11,6 +11,7 @@ Labyrinttiratkaisija tiralabraan.
 * [Viikkoraportti 4](doc/viikkoraportti4.md)
 * [Viikkoraportti 5](doc/viikkoraportti5.md)
 * [Viikkoraportti 6](doc/viikkoraportti6.md)
+* [javadoc](javadoc/)
 
 ## Käyttöohje
 
@@ -26,7 +27,7 @@ A*-algoritmilla. Kuvan tulee olla sellaisessa bittikarttamuodossa, jota
 alkupiste punaisella värillä (255, 0, 0) ja loppupiste vihreällä
 (0, 255, 0). Seinät, joiden läpi ei saa siirtyä, merkitään mustalla
 värillä (0, 0, 0). Muiden pikselien väriarvot voivat olla mitä vain. Kuvan
-tulee olla häviöttömästi koodattu, jotta näiden merkkipikselien arvot eivät
+tulee olla häviöttömästi koodattu (esim. PNG), jotta näiden merkkipikselien arvot eivät
 muutu.
 
 Tulostetiedostoon kirjoitetaan kopio alkuperäisestä labyrintistä, johon on
