@@ -33,8 +33,8 @@ Pitkä labyrintti:
 |BFS      | 43 ms  | 6848    | 187 200  |
 
 A* siis kävi vähiten solmuja läpi, kuten oli odotettavissa. Nopeiten kuitenkin
-suoriutui BFS. Tämä yllättävä tulos liittynee siihen, että toteutukseni käyttää
-ympyrätaulukkoa, josta poistaminen ja lisääminen ovat O(1)-operaatioita.
+suoriutui BFS. Tämä yllättävä tulos liittynee siihen, että jonototeutukseni käyttää
+ympyrätaulukkoa, jolloin poistaminen ja lisääminen ovat O(1)-operaatioita.
 Parhaan reitin sen sijaan löysi Dijkstra. Tämä tapahtui luultavasti siksi, että
 suoraa diagonaalietäisyyttä mittaava heuristiikka sopii huonosti tällaiseen
 polkuun.
