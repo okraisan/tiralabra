@@ -1,5 +1,8 @@
 package tiralabyra;
 
+/**
+ * Results of a labyrinth solve.
+ */
 public class SolvedResult {
 
   private boolean solved = false;
@@ -19,6 +22,9 @@ public class SolvedResult {
    */
   private int numberOfNodesVisited;
 
+  /**
+   * Number of nanoseconds it took to execute this search.
+   */
   private long timeSpent;
 
   public SolvedResult() {

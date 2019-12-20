@@ -1,5 +1,9 @@
 package tiralabyra;
 
+  /**
+   * A graph node that is comparable to other nodes by total distance traveled
+   * plus an estimate of the remaining path length.
+   */
 public class PrioNode implements Comparable<PrioNode> {
 
   /**
@@ -12,9 +16,8 @@ public class PrioNode implements Comparable<PrioNode> {
    */
   private double distanceTraveled;
 
+
   /**
-   * A graph node that is comparable to other nodes by total distance traveled
-   * plus an estimate of the remaining path length.
    * @param index Index of this node in the graph.
    * @param distanceTraveled Total distance to this node from the starting point.
    */

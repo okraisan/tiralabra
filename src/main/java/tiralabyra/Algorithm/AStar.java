@@ -1,4 +1,10 @@
-package tiralabyra;
+package tiralabyra.Algorithm;
+
+import tiralabyra.ConnectedGraph;
+import tiralabyra.Edge;
+import tiralabyra.MinHeap;
+import tiralabyra.PrioNode;
+import tiralabyra.SolvedResult;
 
 /**
  * Solve shortest paths using A* (or Dijkstra, when no heuristics specified).

@@ -1,5 +1,8 @@
 package tiralabyra;
 
+/**
+ * A graph of nodes connected by edges.
+ */
 public class ConnectedGraph {
 
   private Edge[][] edges;

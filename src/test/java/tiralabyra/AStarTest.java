@@ -1,5 +1,6 @@
 package tiralabyra;
 
+import tiralabyra.Algorithm.AStar;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

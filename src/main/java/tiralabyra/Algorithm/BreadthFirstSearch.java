@@ -1,11 +1,15 @@
-package tiralabyra;
+package tiralabyra.Algorithm;
 
+import tiralabyra.ConnectedGraph;
+import tiralabyra.Edge;
+import tiralabyra.Queue;
+import tiralabyra.SolvedResult;
+
+/**
+ * Solve paths through a connected graph using BFS.
+ */
 public class BreadthFirstSearch {
-  /**
-   * Solve paths through a connected graph using BFS.
-   * @param graph The graph to be solved.
-   * @return Result with solvability flag and backtrack array.
-   */
+
   public SolvedResult solve(ConnectedGraph graph) {
     // Parent information for each node, for backtracking.
     int[]     parent = new int[graph.size()];

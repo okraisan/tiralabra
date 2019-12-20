@@ -1,5 +1,8 @@
 package tiralabyra;
 
+/**
+ * Minimum heap.
+ */
 public class MinHeap {
   private int size = 0;
   private PrioNode[] data;
@@ -19,6 +22,9 @@ public class MinHeap {
     data = new PrioNode[reservedSize];
   }
 
+  /**
+   * Number of nodes currently in the heap.
+   */
   public int size() {
     return size;
   }

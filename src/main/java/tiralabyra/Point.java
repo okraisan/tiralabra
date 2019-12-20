@@ -1,11 +1,13 @@
 package tiralabyra;
 
+  /**
+   * A point in 2D space with integer coordinates.
+   */
 public class Point {
   private int posX;
   private int posY;
 
   /**
-   * A point in 2D space with integer coordinates.
    * @param x X position, in pixels.
    * @param y Y position, in pixels.
    */

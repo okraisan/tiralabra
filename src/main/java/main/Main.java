@@ -1,8 +1,8 @@
 package main;
 
 import java.util.Scanner;
-import tiralabyra.AStar;
-import tiralabyra.BreadthFirstSearch;
+import tiralabyra.Algorithm.AStar;
+import tiralabyra.Algorithm.BreadthFirstSearch;
 import tiralabyra.ConnectedGraph;
 import tiralabyra.Image;
 import tiralabyra.SolvedResult;
@@ -28,6 +28,8 @@ public final class Main {
     graph.build(image);
     AStar astar = new AStar();
     SolvedResult result = astar.solve(graph, true);
+    //BreadthFirstSearch bfs = new BreadthFirstSearch();
+    //SolvedResult result = bfs.solve(graph);
 
     if (result.wasSolved()) {
       System.out.println("Solved");
